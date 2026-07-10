@@ -8,29 +8,48 @@ product owner's context without asking for it again.
 
 ## Doc taxonomy
 
-Every markdown file in this framework is one of two kinds:
+Every markdown file in this framework is one of three kinds:
 
 | Kind | Owned by | Changes when | Examples |
 |------|----------|--------------|----------|
-| **PROCESS** | the framework | the process itself is improved (via [refinement](../process/refinement.md)) | this file, `orchestration.md`, templates |
-| **LIVING** | the project | the product/code/decisions change | `product.md`, `state.md`, `standards/derived.md`, decision log |
+| **PROCESS** | the framework | the process itself is improved (via [refinement](../process/refinement.md)) | this file, `orchestration.md`, everything under `.claude/` |
+| **LIVING** | the project | the product/code/decisions change | `product.md`, `state.md`, `standards/derived.md`, decision log, work artifacts |
+| **TEMPLATE** | the framework | via refinement, like PROCESS | everything under `templates/` |
 
-Each file declares its kind in an HTML comment at the top. PROCESS docs change rarely and
-deliberately; LIVING docs change constantly and cheaply.
+Each file declares its kind in an HTML comment at the top (`AGENTS.md` and `CLAUDE.md`
+are PROCESS; their declaration lives in this sentence because memory injection strips
+their comments). A PROCESS doc may embed a clearly marked **living section** — the
+Commands table in `AGENTS.md`, the index table in `decisions/README.md`, the fill-in
+sections of `derived.md` — which follows LIVING rules: routine updates to it are project
+work, not refinement. PROCESS docs change rarely and deliberately; LIVING docs change
+constantly and cheaply.
+
+**Summaries:** `AGENTS.md` may condense a canonical rule for always-loaded convenience,
+marked *(summary)* with a link. The canonical doc wins on conflict, and any edit to a
+canonical fact updates its summaries in the same commit (grep for the anchor).
 
 ## The knowledge files
 
+This table is the canonical budget list for all living docs.
+
 | File | Holds | Budget |
 |------|-------|--------|
-| [product.md](product.md) | Why the project exists: vision, users, scope, constraints | ~200 lines |
-| [state.md](state.md) | The now: current focus, recent changes, next steps, known-failed approaches | **60 lines hard cap** |
-| [glossary.md](glossary.md) | Domain terms with precise meanings | one line per term |
+| [product.md](product.md) | Why the project exists: vision, users, scope, constraints, delivery | ~200 lines |
+| [state.md](state.md) | The now: current focus, recent changes, next steps, known-failed approaches | **60 lines hard cap**; *Next steps* ≤10 items |
+| [glossary.md](glossary.md) | Domain terms with precise meanings | 1–2 lines per term |
 | [decisions/](decisions/README.md) | Immutable decision history (ADRs) | one page per decision |
 | [../standards/derived.md](../standards/derived.md) | Stack- and repo-specific conventions | ~150 lines |
+| [../work/backlog.md](../work/backlog.md) | Known-but-not-now work, priority-ordered | ~150 lines |
+| [../work/](../work/README.md) specs & tasks | In-flight work artifacts | per their templates; archived per [work/README](../work/README.md) |
+| [../log/retros.md](../log/retros.md) | Retro entries | ~200 lines |
+| [../log/framework-changelog.md](../log/framework-changelog.md) | Framework self-modification audit | ~100 entries |
 
 Budgets are enforced by **archival, not deletion**: when a living doc exceeds its budget,
-move the oldest/least-relevant content to `readme/log/archive/<filename>-YYYY-MM.md` and
-leave a one-line pointer. Never let a budget stop you from recording something — record
+move the oldest/least-relevant content to `readme/log/archive/` (named
+`sourcefile-YYYY-MM.md`) and leave a one-line pointer. Two exceptions: `state.md`
+*Next steps* overflow goes to the [backlog](../work/backlog.md), never the archive
+(archived work is lost work); *Known dead ends* whose reasons still hold graduate to
+`derived.md` *Gotchas*. Never let a budget stop you from recording something — record
 first, archive to make room.
 
 ## Rules of the knowledge base
@@ -57,7 +76,10 @@ first, archive to make room.
 
 ## Freshness metadata
 
-Every LIVING doc starts with a metadata block:
+Every *stateful* LIVING doc — `product.md`, `glossary.md`, `derived.md`, active specs —
+starts with a metadata block. Exempt: append-only logs (retros, changelog, backlog),
+immutable ADRs, and `state.md` (rewritten every session; its freshness is its git
+mtime):
 
 ```markdown
 <!-- LIVING doc
@@ -77,13 +99,16 @@ The maintenance loop (see [../process/loops.md](../process/loops.md)) runs these
 Any agent may also run them ad hoc when something feels off.
 
 1. **Symbol check** — extract backticked identifiers and file paths from every KB doc;
-   verify each still exists in the repo (`grep`/glob). Missing → doc is stale.
+   verify each still exists in the repo (`grep`/glob). Missing → doc is stale. Skip
+   identifiers inside HTML comments and explicitly marked examples — they illustrate,
+   not claim.
 2. **Anchor check** — for each LIVING doc, compare `last-verified` against the git
    modification dates of its `anchors`. Anchor newer than verification → re-verify.
 3. **Contradiction check** — read the KB end to end (it is small by design) and flag
    claims that conflict with each other or with observed code behavior.
 4. **Command check** — run every command the docs claim works (build, test, lint).
-   Failure → fix doc or fix repo.
+   Long-running commands (`run locally`) are verified to *start cleanly*, then
+   terminated. Failure → fix doc or fix repo.
 5. **Assumption sweep** — list all `[ASSUMPTION]` markers; queue the oldest for the next
    PO interview.
 

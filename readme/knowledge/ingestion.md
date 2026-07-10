@@ -33,14 +33,22 @@ Use when the PO provides documents, meeting transcripts, chat logs, or external 
 4. **Synthesize a digest** for the PO: what was learned (grouped by bucket), conflicts
    found, and open questions the material raised. Keep it skimmable — the PO confirms
    the digest, not the filing.
-5. **Confirm.** Present the digest. Conflicts and surprising interpretations need explicit
-   answers; the rest proceeds unless objected to. If the PO is unavailable and nothing
-   conflicts, file with `[ASSUMPTION]` markers on interpretations and move on — do not
-   block on confirmation of non-conflicting facts.
-6. **File and clean up.** Write to the KB (one home per fact), record any decisions as
-   ADRs dated to when the *source* decided them (note the source). Delete or archive the
-   raw material — the KB is the product; raw inputs left around become a second,
-   contradicting source of truth.
+5. **Confirm.** Present the digest. Conflicts and surprising interpretations need
+   explicit answers; the rest proceeds immediately — file with `[ASSUMPTION]` markers on
+   interpretations rather than waiting (markers make late PO objections cheap to apply).
+   A document the PO *authored* is already PO intent: specs derived faithfully from it
+   inherit approval for their unchanged content, and gate review covers only added
+   interpretation — don't make the PO approve their own words twice.
+6. **File, queue, and clean up.** Write to the KB (one home per fact); record decisions
+   as ADRs (dated to when the source decided them — see the
+   [retroactive exception](decisions/README.md)); **queue the implied work**: committed
+   features become [backlog](../work/backlog.md) entries, with stub draft specs in
+   `readme/work/specs/` where the material carries requirement detail too rich for a
+   backlog line. Only after everything actionable is captured, delete or archive the raw
+   material (`readme/log/archive/` accepts raw ingestion sources) — raw inputs left
+   around become a second, contradicting source of truth. Material pasted in
+   conversation has nothing to delete; material the PO committed to the repo is theirs —
+   propose the cleanup, don't just do it.
 
 ## Protocol B: PO interview
 
@@ -63,10 +71,11 @@ questions blocking a spec, or accumulated `[ASSUMPTION]` markers. Worksheet:
   after that, the gap is a discovery task (prototype, research), not more questions.
 - **"I don't know" is an answer.** File it as an open question with your default adopted
   as `[ASSUMPTION]`, and move on.
-- **Interview and implementation don't share a session.** The interview's output is
-  written knowledge; implementation starts from the written knowledge, not from the
-  conversational residue. (Same-session mixing produces specs contaminated by
-  half-retracted statements.)
+- **Implementation starts from the written artifact, not the conversation.** Synthesize
+  and file first; build from what was filed. For substantial interviews (onboarding, a
+  new feature area), prefer a fresh session for the build — conversational residue
+  (half-retracted statements, abandoned directions) contaminates specs. A one-or-two
+  question clarification mid-task is not an interview and doesn't trigger this rule.
 
 **Question priority order** — spend the PO's patience on:
 
@@ -93,6 +102,7 @@ notes and file anything with a life beyond the task:
 | A term acquired a precise meaning | `glossary.md` |
 | A convention or gotcha future work must know | `standards/derived.md` |
 | A product-level fact emerged | `product.md` (with `[ASSUMPTION]` if PO hasn't confirmed) |
+| A fact about an external system (API behavior, third-party constraint) | the spec that depends on it; `product.md` *Constraints* if product-wide |
 | An approach was tried and failed | `state.md` → *Known dead ends* |
 | Everything else | nowhere — most notes should die with the task |
 

@@ -1,7 +1,7 @@
 <!-- LIVING doc — domain vocabulary. Owned by the project, seeded empty.
      last-verified: (never — unfilled)
      anchors: (none yet)
-     One line per term: **term** — precise meaning. Alphabetical. Add a term the moment
+     1–2 lines per term: **term** — precise meaning. Alphabetical. Add a term the moment
      it acquires a meaning more specific than everyday usage — especially when code and
      PO use the same word differently, or two words for the same thing. -->
 

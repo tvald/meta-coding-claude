@@ -1,7 +1,7 @@
 # 0001. Adopt this agentic development framework
 
 - **Status:** accepted
-- **Date:** <!-- seeding date — set when this kit lands in the project -->
+- **Date:** 2026-07-10 <!-- kit build date; update to the seeding date when the kit lands in a project -->
 - **Decided by:** PO
 
 ## Context
@@ -22,8 +22,9 @@ framework refines itself from feedback and observed gaps.
 - **No process (raw prompting)** — fast at first; loses context across sessions, quality
   drifts, PO becomes the bottleneck for all memory.
 - **Heavyweight spec-driven frameworks** (full spec/plan/tasks pipeline for every change)
-  — documented to be ~10x slower on small changes and produce documentation that outweighs
-  the code; rejected in favor of proportional ceremony.
+  — public evaluations consistently find them several-fold slower on small changes,
+  producing documentation that outweighs the code; rejected in favor of proportional
+  ceremony.
 
 ## Consequences
 

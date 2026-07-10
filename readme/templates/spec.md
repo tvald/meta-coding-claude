@@ -1,11 +1,15 @@
 # Spec: <feature name>
 
-<!-- TEMPLATE — copy for each feature/work item that needs one. Delete guidance comments when filling in.
+<!-- TEMPLATE — copy to readme/work/specs/<slug>.md for each Feature-track item
+     (conventions: readme/work/README.md). Delete guidance comments when filling in.
      A spec answers WHAT and WHY. It never contains HOW (that's the plan) or code.
-     Right-size it: a spec should be as short as the feature allows. One paragraph is a valid spec. -->
+     Right-size it: a spec should be as short as the feature allows — and shorter than
+     the diff it produces. One paragraph is a valid spec. -->
 
-- **Status:** draft | approved | implemented | superseded
-- **Owner decision needed:** <!-- yes: awaiting PO sign-off | no: within standing approval -->
+- **Status:** draft | approved | needs-reapproval | implemented | superseded
+- **Approval:** <!-- unfilled while draft. On approval: date + the PO's yes (quote or
+     reference), or "inherited from <PO-authored source>" for faithfully derived content.
+     Every Feature-track spec requires PO approval — there is no self-exemption. -->
 - **Date:** YYYY-MM-DD
 - **Related:** <!-- links to decisions (ADR numbers), prior specs, external docs -->
 

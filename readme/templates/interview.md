@@ -1,7 +1,7 @@
 # Interview worksheet: <topic>
 
-<!-- TEMPLATE — used by the ingestion loop when knowledge must come from the PO's head
-     (see readme/knowledge/ingestion.md for the protocol). This worksheet is scratch;
+<!-- TEMPLATE — copy to readme/work/interviews/<slug>.md when knowledge must come from
+     the PO's head (protocol: readme/knowledge/ingestion.md). This worksheet is scratch;
      synthesized answers land in the knowledge base and the worksheet is deleted. -->
 
 - **Goal of this interview:** <!-- the decision or doc this must unblock -->
@@ -14,8 +14,9 @@
 
 ## Questions
 
-<!-- Rules: batch ≤5 per round; closed questions with proposed defaults beat open ones;
-     always offer your best-guess answer so the PO can just say "yes".
+<!-- Rules: batch sizes per the protocol (ingestion.md: 1–3 per message interactive,
+     up to ~10 in an async worksheet); closed questions with proposed defaults beat open
+     ones; always offer your best-guess answer so the PO can just say "yes".
      Format: -->
 
 1. **Q:** ...

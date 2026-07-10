@@ -78,7 +78,8 @@ The inner build loop — one task to one verified change. Run by a [builder](../
 Knowledge-in. Run by an [analyst](../agents/roles.md#analyst).
 
 - **Trigger:** the PO provides material; a spec has open questions; `[ASSUMPTION]`
-  markers accumulate (≥5 or any blocking one); onboarding.
+  markers accumulate (≥5 by grep, or any *blocking* one — an assumption a current task
+  depends on); onboarding.
 - **Steps:** run the matching [protocol](../knowledge/ingestion.md) (A: documents,
   B: interview, C is embedded in the task loop) → file → confirm per protocol.
 - **Exit:** KB updated; **implied work queued** — features the material commits to

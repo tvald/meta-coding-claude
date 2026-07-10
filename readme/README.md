@@ -49,17 +49,23 @@ readme/
     quality-gates.md            definition of done, review levels, mandatory PO gates
   agents/
     roles.md                    role contracts: orchestrator, analyst, builder, reviewer, curator
+  work/                       WHAT'S IN FLIGHT (conventions in its README)
+    backlog.md        LIVING    known-but-not-now work, priority-ordered
+    specs/            LIVING    feature specs (Feature track)
+    tasks/            LIVING    task files: verification criteria + review records
   templates/                  copy-to-use: spec, adr, task, retro, interview
   log/                        LIVING trails
     framework-changelog.md      audit of framework self-modification
-    retros.md                   retro entries, newest first
-    archive/                    budget overflow from living docs
+    retros.md                   retro entries, newest first (dated — schedules maintenance)
+    archive/                    budget overflow + archived raw sources
 .claude/                      Claude Code adapter: subagents + skills (see its README)
 ```
 
 **PROCESS docs** (unmarked above) belong to the framework and change only via
 [refinement](process/refinement.md). **LIVING docs** belong to the project and change
-constantly under [management rules](knowledge/management.md).
+constantly under [management rules](knowledge/management.md). **Templates** are
+PROCESS-owned copy-sources. Full taxonomy (including living sections inside PROCESS docs
+and AGENTS.md summaries): [management.md](knowledge/management.md#doc-taxonomy).
 
 ## Reading order
 

@@ -20,8 +20,9 @@
 
 ## Next steps
 
-<!-- Queued work in priority order: follow-ups, repair actions from consistency checks,
-     items awaiting a PO gate (mark those ⏳PO). -->
+<!-- The immediate queue only, priority order, ≤10 items: follow-ups, repair actions,
+     items awaiting a PO gate (mark those ⏳PO). Everything beyond the immediate queue
+     lives in readme/work/backlog.md — overflow flows there, never to the archive. -->
 
 - Run onboarding: fill `readme/knowledge/product.md`, derive `readme/standards/derived.md`.
 

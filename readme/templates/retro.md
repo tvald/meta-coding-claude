@@ -1,11 +1,15 @@
-# Retro: <date or trigger>
+# Retro: YYYY-MM-DD <trigger>
 
-<!-- TEMPLATE — appended to readme/log/retros.md (newest first), not a standalone file.
-     Cheap by default: the standard task-loop retro is 3 bullets and <2 minutes.
-     Go deep only on triggers: a gate was missed, PO corrected the same thing twice,
-     verification passed but the result was wrong, or a loop ran >2x its size guess. -->
+<!-- TEMPLATE — inserted at the TOP of readme/log/retros.md (newest first), not a
+     standalone file. The date is mandatory — maintenance scheduling reads it.
+     Cheap by default: three short fields, <2 minutes. Go deep only on triggers:
+     a gate was missed, the PO corrected the same thing twice, verification passed but
+     the result was wrong, a loop badly overran, or a review found a class of problem.
+     PO corrections are tagged [correction] in the trigger line — always grep retros.md
+     (and its archive) for a prior entry on the same topic first; a repeat = mandatory
+     rule change (readme/process/refinement.md). -->
 
-- **Trigger:** end-of-task | end-of-session | failure | PO feedback
+- **Trigger:** end-of-session | end-of-task | failure | [correction] PO feedback
 - **Scope:** <task/spec/period covered>
 
 ## What happened

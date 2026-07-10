@@ -49,3 +49,12 @@
 <!-- How the PO will judge whether this project is working. Measurable where possible. -->
 
 *Unfilled.*
+
+## Delivery
+
+<!-- How work ships and how the PO engages. Filled by the onboarding interview:
+     - What "release" means here (this defines mandatory PO gate 3 — quality-gates.md)
+     - Merge/PR/CI workflow, if any beyond local merges
+     - PO check-in cadence and preferred channel for ⏳PO items -->
+
+*Unfilled.*

@@ -1,8 +1,10 @@
 # Task: <short imperative title>
 
 <!-- TEMPLATE — a task is the unit of the build loop: one branch, one reviewable change.
-     Most tasks live only in the orchestrator's working memory or tracker; write a task FILE
-     only when work will span sessions or be handed to another agent. -->
+     Copy to readme/work/tasks/<slug>.md (conventions: readme/work/README.md).
+     Quick-track tasks live only in the orchestrator's working memory; write a task FILE
+     when work spans sessions, is handed to another agent (always, for spawned builders),
+     or gets peer/gated review — the file is where the review record lives. -->
 
 - **Spec:** <!-- link to spec, or "direct" for maintenance/chore work -->
 - **Status:** pending | in-progress | blocked | done
@@ -26,4 +28,12 @@
 
 <!-- Anything learned during the work that outlives the task gets moved to the knowledge base
      (decision → ADR, term → glossary, convention → standards/derived.md, product fact → product.md)
-     before the task is closed. This section is a staging area, not a destination. -->
+     before the task is closed. This section is a staging area, not a destination.
+     Isolated/parallel builders: stage ALL shared-KB updates here (single-writer rule);
+     the orchestrator folds them in at merge. Also record your branch name + final commit. -->
+
+## Review
+
+<!-- Filled at peer/gated review: verdict, findings (blocking/advisory, file:line),
+     fixes applied, and any waivers with reasons. This record is what lets recurring
+     finding classes be detected (refinement signal) — don't summarize it away. -->

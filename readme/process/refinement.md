@@ -34,6 +34,8 @@ tinkering with the process on aesthetics.
    - how knowledge is handled → [management.md](../knowledge/management.md) /
      [ingestion.md](../knowledge/ingestion.md)
    - role contracts → [roles.md](../agents/roles.md)
+   - Claude Code wiring (subagents, skills) → `.claude/` (PROCESS files; refinements
+     there are logged like any other)
    - always-loaded rules → `AGENTS.md` (last resort — see budget rule)
 2. **Design the smallest edit that would have prevented the triggering incident.**
    Prefer, in order: *sharpening an existing line* → *replacing a line* → *adding a
@@ -46,6 +48,9 @@ tinkering with the process on aesthetics.
    date, doc, change, trigger. Same commit as the edit. The changelog is how the PO
    audits process drift asynchronously — an entry the PO dislikes gets reverted by a
    follow-up refinement, not by rewriting history.
+5. **Re-sync summaries.** If the edited fact is condensed anywhere (the *(summary)*
+   sections of `AGENTS.md` — [management.md](../knowledge/management.md#doc-taxonomy)),
+   update the summary in the same commit.
 
 ## Limits on self-modification
 

@@ -24,13 +24,20 @@ context is real rather than reconstructed:
 - Anything **expensive to reverse** (a week+ to undo, or affecting stored data/users)
 - The PO **overrules** a default or standard — the exception and its reason must outlive
   the conversation
-- An agent **deviates from an approved spec or plan** for good reason (bidirectional
-  spec rule — see [../../process/orchestration.md](../../process/orchestration.md))
+
+(Deviating from an approved spec is *not* by itself a trigger — the bidirectional rule
+records it in the spec ([orchestration](../../process/orchestration.md#the-feature-track));
+write an ADR only when the deviation also hits one of the triggers above.)
 
 Do **not** record: choices with no lasting consequence, style preferences already covered
 by standards, or restatements of what the code shows. When unsure, apply the test:
 *"Would a future agent, seeing the current state, plausibly redo this differently?"*
 Yes → record.
+
+One exception to "in the same session": [ingestion](../ingestion.md) may record
+decisions a source document already made — date them to the source's decision and cite
+it. That is transcription of history, not the after-the-fact reconstruction this rule
+forbids.
 
 ## Who decides
 
@@ -59,5 +66,5 @@ touches architecture.
 
 | # | Decision | Status | Date |
 |---|----------|--------|------|
-| [0001](0001-adopt-agentic-framework.md) | Adopt this agentic development framework | accepted | (seeded) |
+| [0001](0001-adopt-agentic-framework.md) | Adopt this agentic development framework | accepted | 2026-07-10 |
 <!-- Append new rows at the bottom. Keep this table in sync in the same commit as the ADR. -->
