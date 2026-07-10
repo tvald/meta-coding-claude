@@ -66,6 +66,7 @@ syntax). Enforcement may only tighten (deny/verify), never grant what the sessio
 couldn't already do.
 
 <!-- Facts about Codex conventions (AGENTS.md native, .agents/skills location, SKILL.md
-     format, custom prompts deprecated, codex exec, hooks) verified against
-     developers.openai.com/codex → learn.chatgpt.com docs on 2026-07-10. Decaying facts:
-     re-verify on next maintenance touch. -->
+     format, `$skill-name` explicit-invocation syntax, custom prompts deprecated,
+     codex exec, hooks) verified against developers.openai.com/codex →
+     learn.chatgpt.com docs on 2026-07-10. Decaying facts: re-verify on next
+     maintenance touch. -->

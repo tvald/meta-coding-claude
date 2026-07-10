@@ -18,6 +18,10 @@
 <!-- Last few completed items, newest first. One line each. Prune aggressively —
      git history is the full record. -->
 
+- 2026-07-10: Adopted the adapter contract (`readme/meta/README.md#adapters`, PO-directed):
+  adapters bind, never own, process semantics; maintenance loop now audits it (step 6).
+- 2026-07-10: Added Codex adapter `.agents/` (Agent Skills mirror of the seven skills;
+  conventions verified against official Codex docs same day). Peer-reviewed: approved.
 - 2026-07-10: Restructured into self-contained add-on (PO-approved plan): framework core
   → `readme/meta/` (+ seed tree, deploy/bootstrap/reset procedure); LIVING paths
   unchanged; all links verified + bootstrap simulated end-to-end.

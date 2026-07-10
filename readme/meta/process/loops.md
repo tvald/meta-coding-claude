@@ -124,7 +124,8 @@ Knowledge-in. Run by an [analyst](../agents/roles.md#analyst).
 ## Review loop
 
 Judgment on a finished change. Run by a [reviewer](../agents/roles.md#reviewer) with
-fresh context — in Claude Code, always a separate subagent.
+fresh context — always a separate context that did not build the diff; each adapter
+binds this natively ([runtime mapping](../agents/roles.md#runtime-mapping)).
 
 - **Trigger:** a task exits its build phase at review level *peer* or *gated*. The
   orchestrator hands the reviewer the task file and the branch/commit range.

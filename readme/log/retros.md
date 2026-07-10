@@ -4,6 +4,18 @@
 
 # Retros
 
+# Retro: 2026-07-10 — adapter contract + Codex adapter session
+
+- **What happened:** PO adopted five adapter principles (proposed refinements accepted):
+  contract canonicalized at `meta/README.md#adapters`, Claude adapter re-synced,
+  maintenance step 6 added (adapter audit); Codex adapter added at `.agents/` after
+  verifying current Codex conventions against official docs (custom prompts deprecated →
+  Agent Skills). Fresh-context peer review: approved, 2 advisory doc fixes applied.
+- **Gap:** the framework had harness-specific phrasing sprinkled in core docs ("in
+  Claude Code, always a separate subagent") — invisible until a second adapter existed.
+- **Change made:** generalized to contract-language pointing at the runtime mapping;
+  the new adapter audit (step 6) now checks for exactly this class of drift.
+
 # Retro: 2026-07-10 — self-contained restructure session
 
 - **What happened:** PO-planned restructure executed: PROCESS docs → `readme/meta/`
