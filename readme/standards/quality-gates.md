@@ -12,12 +12,18 @@ must have actually been executed, not reasoned about.
 1. **Acceptance checks pass** — the task's Verification section was executed and passed.
 2. **The full check suite passes** — build, tests, lint, type check (the Commands table
    in `/AGENTS.md`); clean, with no unrelated breakage.
-3. **New behavior is tested** — a test exists that fails without this change (or the task
-   explicitly documents why automated testing is impossible and what manual verification
-   was performed instead).
+3. **New behavior is tested** — a test exists that fails without this change. Exemptions:
+   non-behavioral changes (typos, comments, formatting, docs) need no test; where
+   automated testing is genuinely impractical, the task documents why and what manual
+   verification was performed instead. "The test would just restate a string" is a valid
+   exemption; "I didn't get to it" is not.
 4. **Knowledge rode along** — decisions → ADRs, terms → glossary, conventions/gotchas →
    derived.md, deviations → spec/plan updated, `state.md` current. All in the task's
-   commits, not promised for later.
+   commits, not promised for later. **Carve-out for isolated/parallel builders**
+   (single-writer rule, [orchestration](../process/orchestration.md#parallelization)):
+   they stage KB updates in their task file instead, and "same commit" is satisfied when
+   the orchestrator folds the staged updates into the KB in the merge commit. A reviewer
+   counts properly staged updates as riding along.
 5. **The diff is coherent** — reviewable as one change, summarizable in a sentence, no
    drive-by edits outside the task's scope.
 6. **No debris** — no leftover debugging output, commented-out code, TODO-without-owner,
@@ -30,7 +36,7 @@ Review effort scales with risk, chosen at routing time
 
 | Level | What happens | Use for |
 |-------|-------------|---------|
-| **self** | implementer re-reads the full diff against this checklist before closing | trivial changes: typos, doc edits, config tweaks with no behavior change |
+| **self** | implementer re-reads the full diff against this checklist before closing | Quick-track work |
 | **peer** | a *separate agent with fresh context* reviews the diff (reviewer role — [../agents/roles.md](../agents/roles.md)) | the default for all behavior-changing work |
 | **gated** | peer review + PO approval before merge/release | the mandatory-gate list below |
 
@@ -40,20 +46,29 @@ and — most importantly — *what's missing*: unhandled edge cases, absent test
 holes. Review findings are fixed or explicitly waived with a reason; silence is not a
 waiver.
 
+**Durability:** peer- and gated-level work always has a [task file](../work/README.md);
+findings and waivers are recorded in its *Review* section — that record is what makes
+"the same class of finding recurs" ([refinement signal](../process/refinement.md#signals))
+detectable. Self-level review needs no record.
+
 ## Mandatory PO gates
 
-Agents proceed autonomously **except** at these points. This list is exhaustive by
-design — anything not on it does not need the PO. (The PO can extend or shrink it; that
-change is an ADR.)
+Agents proceed autonomously **except** at these points. This list is **canonical and
+exhaustive** — anything not on it is within *standing approval* (the term other docs use
+for "agents decide without asking"). The PO can extend or shrink the list; that change is
+an ADR, and the summary in `/AGENTS.md` must be re-synced in the same commit.
 
 1. **Spec approval** for feature-track work (see orchestration routing) — the one
    review the PO cannot delegate, because it defines *what* gets built.
 2. **Irreversible or externally visible actions** — deleting data, schema migrations on
    real data, publishing packages, deploying to production, sending communications,
    spending money, granting access.
-3. **Release** — whatever "release" means for this project (defined during onboarding).
-4. **Security-sensitive changes** — auth, payments, PII handling: PO sign-off on the
-   approach (the spec or ADR), regardless of change size.
+3. **Release** — whatever "release" means for this project (defined during onboarding,
+   recorded in [product.md](../knowledge/product.md) → *Delivery*).
+4. **Security-sensitive changes** — anything altering the *behavior* of auth, payments,
+   or PII handling: PO sign-off on the approach (the spec or ADR), regardless of change
+   size. Non-behavioral edits in those areas (typos, comments, formatting) are not
+   gated — they route normally with peer review minimum.
 
 **Gate mechanics:** when work hits a gate, the agent (a) prepares everything reviewable
 (the spec, the diff, the ADR), (b) records the pending gate in `state.md` under *Next
