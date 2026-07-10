@@ -4,6 +4,13 @@
 
 # Retros
 
+# Retro: 2026-07-10 — human-facing README session
+
+- **What happened:** PO requested a high-level root `README.md` explaining the framework
+  to a human; written from the canonical docs, all links verified, changelog + state updated.
+- **Gap:** none — routing (Quick track, pre-onboarding exception) and closure were unambiguous.
+- **Change made:** none.
+
 # Retro: 2026-07-10 — alternative-framework review session
 
 - **Trigger:** session close (PO-directed comparative review)

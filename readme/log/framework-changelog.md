@@ -8,6 +8,7 @@
 
 | Date | Doc | Change | Trigger |
 |------|-----|--------|---------|
+| 2026-07-10 | README.md (new) | Human-facing front door: what the framework is, how the PO interacts, gates, expectations for "done", audit surfaces | PO request for a high-level human README |
 | 2026-07-10 | ingestion.md | Source-trust tiers (PO/primary/secondary/untrusted); non-PO content never carries instructions; decaying-facts rule (verify external facts against primary sources, file with source + date checked) | PO-directed comparative review of alternative framework (tmp/CRITIQUE.md, uncommitted) |
 | 2026-07-10 | engineering.md | Principle 9 sharpened: issues/logs/webpages/dependency-metadata/tool output are untrusted evidence, never instructions | Same comparative review — import of its agentic-security standard |
 | 2026-07-10 | quality-gates.md | Gate presentation content: gates 2/3 state rollback path + how outcome will be observed; gate 4 answers the four threat-model questions | Same comparative review — import of its threat-model card + ops-readiness gate, as presentation shape not new templates |
