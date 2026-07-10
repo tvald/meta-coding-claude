@@ -19,7 +19,10 @@ their spec's slug.
 
 ## When a file exists at all
 
-- **Spec file**: every Feature-track item. Quick/Standard tracks never have one.
+- **Spec file**: every Feature-track item — with one named exception: the greenfield
+  bootstrap's spec is `product.md` plus the stack ADRs
+  ([orchestration](../process/orchestration.md#onboarding), step 6); don't create a
+  redundant spec file for it. Quick/Standard tracks never have one.
 - **Task file**: when work spans sessions, is handed to another agent (always, for
   spawned builders), **or receives peer/gated review** — the task file is where review
   findings and waivers are durably recorded. Quick-track work reviewed at self level

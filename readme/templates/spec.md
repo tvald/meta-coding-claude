@@ -13,7 +13,8 @@
 - **Date:** YYYY-MM-DD
 - **Related:** <!-- links to decisions (ADR numbers), prior specs, external docs -->
 
-<!-- LIVING doc — freshness (readme/knowledge/management.md#freshness-metadata):
+<!-- LIVING doc — freshness block: KEEP this comment when filling in the spec
+     (readme/knowledge/management.md#freshness-metadata):
      last-verified: YYYY-MM-DD
      anchors: (code paths whose change likely invalidates this spec; fill once known) -->
 

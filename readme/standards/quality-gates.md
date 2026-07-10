@@ -36,7 +36,7 @@ Review effort scales with risk, chosen at routing time
 
 | Level | What happens | Use for |
 |-------|-------------|---------|
-| **self** | implementer re-reads the full diff against this checklist before closing | Quick-track work |
+| **self** | implementer re-reads the full diff against this checklist before closing | Quick-track work — except in auth/payment/PII areas, where peer is the minimum (gate 4) |
 | **peer** | a *separate agent with fresh context* reviews the diff (reviewer role — [../agents/roles.md](../agents/roles.md)) | the default for all behavior-changing work |
 | **gated** | peer review + PO approval before merge/release | the mandatory-gate list below |
 

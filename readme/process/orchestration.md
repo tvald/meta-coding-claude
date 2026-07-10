@@ -143,7 +143,8 @@ onboarding.)
    recommended enforcement hooks (`.claude/README.md`, *Optional: deterministic
    enforcement*). **Greenfield
    additionally:** propose a stack with rationale and get the PO's pick — stack choice
-   is expensive to reverse and always PO-gated; record the ADRs.
+   is expensive to reverse, and this interview approval *is* its gate (gate 1: the stack
+   ADRs form part of the bootstrap item's spec); record the ADRs.
 5. **Seed state** — populate `state.md` *Next steps* and `readme/work/backlog.md` with
    whatever the interview surfaced; commit everything.
 6. **Greenfield bootstrap** — scaffold the repo as a normal **Feature-track item**
@@ -154,6 +155,7 @@ onboarding.)
 
 Onboarding ends when `product.md` has no unfilled sections and the Commands table in
 the repo-root `AGENTS.md` is verified (for greenfield, that means the bootstrap item is done). Defer
-everything else to normal loops. If the PO is absent mid-interview, park the remaining
-questions `⏳PO` decision-ready and end the session cleanly — a parked onboarding is the
-correct outcome, not a failure.
+everything else to normal loops. If the PO is absent — from the start or mid-interview —
+prepare what's preparable (repo survey, drafts, the interview worksheet), park the
+questions `⏳PO` decision-ready, and end the session cleanly — a parked onboarding is
+the correct outcome, not a failure.
