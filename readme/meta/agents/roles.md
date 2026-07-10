@@ -108,7 +108,10 @@ The knowledge-upkeep role. Runs the [maintenance loop](../process/loops.md#maint
 
 Portable rule: any mechanism that provides an isolated context works — a subagent, a
 fresh chat session, or another tool entirely. The contract, not the mechanism, is the
-standard. In Claude Code specifically, `.claude/agents/` provides ready subagent
-definitions for reviewer, analyst, and curator, and builders can run as parallel
-subagents in isolated worktrees; the orchestrator is the main session (see
-[../../.claude/README.md](../../../.claude/README.md)).
+standard. Installed adapters bind the roles natively — in Claude Code, `.claude/agents/`
+provides ready subagent definitions for reviewer, analyst, and curator, and builders
+run as parallel subagents in isolated worktrees
+([.claude/README.md](../../../.claude/README.md)); in Codex, roles run as delegated
+agents or separate `codex exec` sessions
+([.agents/README.md](../../../.agents/README.md)). The orchestrator is always the main
+session.

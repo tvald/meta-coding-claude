@@ -12,7 +12,8 @@ maintaining their own process.
 It is markdown all the way down. There is no runtime, no server, no install step —
 just documents that agents read and follow, designed so that any capable coding agent
 can pick up the project cold and act with full context. It ships with native wiring
-for [Claude Code](.claude/README.md), but the framework itself is tool-agnostic.
+for [Claude Code](.claude/README.md) and [Codex](.agents/README.md), but the framework
+itself is tool-agnostic.
 
 ## Why it exists
 
@@ -35,7 +36,7 @@ framework traces back to one of them:
 
 **Seed a project:** copy `AGENTS.md` and `readme/meta/` into your repository (new or
 existing) — plus `.claude/` and a one-line `CLAUDE.md` (`@AGENTS.md`) if you use Claude
-Code — then start an agent session. The first session creates the mutable state files
+Code, or `.agents/` if you use Codex — then start an agent session. The first session creates the mutable state files
 itself from `readme/meta/seed/`; deleting them later resets the framework for a new
 project ([procedure](readme/meta/README.md#deploy-bootstrap-reset)).
 

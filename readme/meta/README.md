@@ -69,6 +69,7 @@ readme/
     retros.md                   retro entries, newest first (dated — schedules maintenance)
     archive/                    budget overflow + archived raw sources
 .claude/                      Claude Code adapter: subagents + skills (see its README)
+.agents/                      Codex adapter: Agent Skills (see its README)
 ```
 
 Everything under `meta/` is PROCESS (or a TEMPLATE); everything else under `readme/` is
@@ -79,8 +80,9 @@ summaries): [management.md](knowledge/management.md#doc-taxonomy).
 
 A harness adapter is native wiring — subagents, skills, prompts, declarative config —
 that binds one agent runtime to the framework's contracts. Current instances:
-[`.claude/`](../../.claude/README.md) (Claude Code). Every adapter, present or future,
-is bound by this contract:
+[`.claude/`](../../.claude/README.md) (Claude Code) and
+[`.agents/`](../../.agents/README.md) (Codex / any Agent Skills-compatible harness).
+Every adapter, present or future, is bound by this contract:
 
 1. **Adapters never own process semantics.** Loops, gates, role contracts, and
    definitions of done live in `readme/meta/`. Adapter files may condense them for
@@ -116,8 +118,9 @@ The framework is a self-contained add-on to any repository.
 
 - **Deploy:** copy `AGENTS.md` and `readme/meta/` into the target repo. For Claude Code,
   also copy `.claude/` and a `CLAUDE.md` containing the single line `@AGENTS.md` (skip
-  or merge if the repo already has one). Nothing else is required — state bootstraps
-  itself.
+  or merge if the repo already has one). For Codex (or any Agent Skills-compatible
+  harness), also copy `.agents/` — no shim file; Codex reads `AGENTS.md` natively.
+  Nothing else is required — state bootstraps itself.
 - **Bootstrap (first run, automatic):** boot step 1 detects that
   `readme/knowledge/state.md` does not exist. Copy the contents of `readme/meta/seed/`
   into `readme/` (producing `readme/knowledge/`, `readme/standards/derived.md`,
