@@ -16,7 +16,16 @@ Cross-cutting rules for every loop:
 - **Context budget.** A loop degrades before it fails: at roughly two-thirds of the
   context window, don't push on → stop at the next verified increment, write the handoff
   into the task file or `state.md`, and resume fresh. Loops keep state in files precisely
-  so this is cheap.
+  so this is cheap. The same reflex applies before any long-running or hard-to-reverse
+  step — checkpoint the in-flight state to a file first, so an interruption never destroys
+  work that lived only in memory.
+- **Mid-work interruption.** When the PO injects a new instruction mid-task, first decide
+  *steer* vs *halt*: a minor course-correction that doesn't change the task's goal folds
+  into the current work and you continue; an instruction that redirects or supersedes the
+  work means stop at the next verified increment, write the in-flight state and what
+  remains into the task file or `state.md`, then route the new instruction through the
+  [routing table](orchestration.md#routing). A halted task resumes from that written
+  handoff — no re-derivation.
 - **Learn on exit.** Every loop's last step is the cheap retro *question*: *did anything
   here reveal a gap worth fixing?* A written entry is required only when the answer is
   yes, and once per session at close (see [Retro loop](#retro-loop)) — asking is
@@ -29,8 +38,11 @@ The outermost loop — wraps everything a working session does.
 - **Trigger:** a session starts.
 - **Boot:** read [state.md](../knowledge/state.md) (the now). If it disagrees with
   recent `git log` — commits it doesn't reflect — the previous session crashed before
-  closing: reconcile *Recently done* / *Current focus* from git first. Then route the
-  session's goal via the [orchestration table](orchestration.md#routing). If the PO gave
+  closing: reconcile *Recently done* / *Current focus* from git first. A dirty working
+  tree or a stray task branch means a session was interrupted mid-change, not just before
+  closing — resume that work from its diff/task file before taking anything new. Then
+  route the session's goal via the [orchestration table](orchestration.md#routing). If
+  the PO gave
   no goal, take the top unblocked item of *Next steps* in `state.md`, then the top of
   the [backlog](../work/backlog.md); if both are empty, run the
   [Maintenance loop](#maintenance-loop). If the PO returns after a long gap, open with a

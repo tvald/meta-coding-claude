@@ -8,6 +8,7 @@
 
 | Date | Doc | Change | Trigger |
 |------|-----|--------|---------|
+| 2026-07-10 | loops.md, AGENTS.md, orchestration.md | Interruption handling: dirty-tree/orphan-branch resume at boot; checkpoint-before-risky-step reflex for all loops; steer-vs-halt rule for mid-work PO interrupts | PO-directed: interruption-handling review |
 | 2026-07-10 | loops.md | Maintenance sweep also re-presents/parks ⏳PO items untouched for two runs, per gate mechanics | Round-2b refinement (validation-AMEND wiring; no new authority — links existing PO-approved gate rule) |
 | 2026-07-10 | agents/roles.md | Orchestrator must-not: never absorb a killed spawned role's work inline — checkpoint and restart the role | PO feedback (`[correction]` retro logged); authority-boundary change PO-approved by the same instruction |
 | 2026-07-10 | .claude/agents/*, .claude/README.md | Model tiering: reviewer→Opus, analyst/builder/curator→Sonnet; orchestrator keeps strongest model | PO feedback: subagents on simpler models to conserve usage limits (`[correction]` retro logged) |

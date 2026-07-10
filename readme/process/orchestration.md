@@ -97,6 +97,10 @@ shared unresolved spec questions, no ordering dependency.
   ([DoD carve-out](../standards/quality-gates.md#definition-of-done)).
 - **Builders report their branch** (name + final commit) when done; without it, nothing
   can be merged or reviewed.
+- **Recover orphaned branches after a crash:** before spawning fresh builders, scan
+  `git worktree list` and `git branch` for abandoned task branches — commits on one are a
+  checkpoint to resume from, none means restart from the task file; remove the dead
+  worktree either way.
 - **Review before merge:** peer review runs against the builder's branch; the reviewer
   re-runs checks on a checkout of that branch. Findings go to a builder; the branch
   merges only after approval.

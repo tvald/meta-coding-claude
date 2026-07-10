@@ -10,7 +10,8 @@ Keep this file under ~150 lines (see `readme/process/refinement.md`).
 ## Boot
 
 1. Read `readme/knowledge/state.md`. If it disagrees with recent `git log` (a crashed
-   session didn't close), reconcile it from git before anything else.
+   session didn't close), reconcile it from git before anything else. A dirty working
+   tree means a session was interrupted mid-change — resume that work before taking new.
 2. If `readme/knowledge/product.md` is unfilled → run
    [onboarding](readme/process/orchestration.md#onboarding) first. Exception: a small
    concrete PO request (Quick/Standard track) may be served before onboarding; Feature
