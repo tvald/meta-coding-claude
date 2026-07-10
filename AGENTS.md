@@ -37,6 +37,7 @@ the **only home for commands** — other docs link here.
 | lint + format | — |
 | type check | — |
 | run locally | — |
+| audit (deps/vulns) | — |
 
 ## Routing *(summary — canonical: [orchestration](readme/process/orchestration.md#routing))*
 

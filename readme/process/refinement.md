@@ -20,6 +20,7 @@ tinkering with the process on aesthetics.
 | A loop hits the overrun rule for process reasons (agent didn't know where to look, docs contradicted) | strong |
 | An agent couldn't answer "where does this go / what applies here?" from the docs | moderate — a routing or ownership gap |
 | A rule was consciously worked around | moderate — the rule may be wrong |
+| The maintenance pulse worsens two consecutive runs ([loops](loops.md#maintenance-loop)) | strong — find the loop that degraded, not just the instances |
 
 ## The refinement procedure
 

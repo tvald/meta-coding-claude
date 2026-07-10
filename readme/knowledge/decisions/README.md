@@ -45,6 +45,10 @@ forbids.
 - **Agents decide** everything else, within standards and prior decisions, and record
   ADRs marked `Decided by: agent`. The PO reviews these asynchronously via git — an ADR
   the PO disagrees with becomes a superseding ADR, not an edit.
+- A PO request that contradicts a recorded ADR or standard gets **one challenge**:
+  surface the conflict, with the reference, before executing. If the PO confirms,
+  comply and record the superseding ADR (`Decided by: PO`) — never argue twice, and
+  never comply silently.
 
 ## Mechanics
 

@@ -42,7 +42,9 @@
 ## Acceptance checks
 
 <!-- How we will know each requirement is met. Concrete: commands to run, behavior to observe.
-     The verifier executes these; write them so a stranger could. -->
+     The verifier executes these; write them so a stranger could. Before Status flips to
+     implemented, each MUST maps to a named permanent test or a recorded exemption
+     (readme/process/orchestration.md#the-feature-track). -->
 
 - [ ] ...
 

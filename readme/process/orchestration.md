@@ -48,7 +48,10 @@ trigger; genuine uncertainty about what the PO wants.
    acceptance checks. Order by dependency; identify what can run in parallel.
 4. **Build** — task loops, parallel where independent (below).
 5. **Integrate** — after all tasks close: run the full suite on the combined result,
-   execute the spec's acceptance checks end-to-end, mark the spec `implemented`. If the
+   execute the spec's acceptance checks end-to-end, then mark the spec `implemented` —
+   only once each MUST requirement maps to a named test in the permanent suite or a
+   recorded exemption in the spec (checks that live only in the spec stop running the
+   day it's shelved). If the
    combined suite fails after a merge, the task whose merge broke it reopens — that's
    why merges run one at a time.
 
@@ -100,7 +103,9 @@ shared unresolved spec questions, no ordering dependency.
 - **Analysis parallelizes freely** — read-only research/exploration agents can always
   fan out.
 - Don't parallelize to feel fast: two dependent tasks run in parallel produce rework,
-  which is slower than the queue.
+  which is slower than the queue. Hard cap: **three unmerged task branches** at once —
+  at the cap, merge or park before spawning another; merge debt compounds faster than
+  breadth pays.
 
 ## Integration mechanics
 

@@ -15,6 +15,9 @@
   must produce, what it may decide alone, and what it must never do.
 - **Fresh context is a feature.** The reviewer's value comes precisely from *not* sharing
   the builder's reasoning, assumptions, or conversational residue.
+- **Condensed returns.** A spawned role returns structured conclusions — findings,
+  branch + final commit, staged KB updates — never a transcript. The spawner's context
+  is a budget ([loops](../process/loops.md)).
 
 ## The roles
 

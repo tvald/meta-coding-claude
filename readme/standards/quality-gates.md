@@ -85,3 +85,16 @@ any is available. Gates block *the gated item*, never the whole system.
   stays open, with the failure and what was tried recorded (dead ends → `state.md`).
 - **Verify the right thing.** Acceptance checks trace to spec requirements. Passing
   unrelated tests proves nothing about the task.
+- **A pass on rerun is not a pass.** A check that fails, then passes on unchanged code
+  is a flake — a defect, not noise. Don't rerun until green → fix it now, or quarantine
+  it with a queued task (`state.md` *Next steps*) so the suite stays trustworthy.
+
+## Escaped defects
+
+A defect discovered after its task closed (worst case: after release): **revert first**
+when a clean revert exists — restore known-good, then diagnose. **Disclose proactively**
+— record it in `state.md`, and if the defect was externally visible, tell the PO in the
+next interaction rather than waiting to be asked. The fix **carries a regression test**
+that fails on the defect — no exemptions. Then run the deep retro
+([loops](../process/loops.md#retro-loop)): verification passed but the outcome was
+wrong — name the check that should have caught it.

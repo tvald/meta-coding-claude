@@ -13,6 +13,10 @@ Cross-cutting rules for every loop:
 - **Overrun rule.** A loop that has consumed ~2x its expected size without converging
   stops and re-routes: split the work, record the dead end, or escalate the track
   ([orchestration](orchestration.md)). Grinding is not persistence.
+- **Context budget.** A loop degrades before it fails: at roughly two-thirds of the
+  context window, don't push on → stop at the next verified increment, write the handoff
+  into the task file or `state.md`, and resume fresh. Loops keep state in files precisely
+  so this is cheap.
 - **Learn on exit.** Every loop's last step is the cheap retro *question*: *did anything
   here reveal a gap worth fixing?* A written entry is required only when the answer is
   yes, and once per session at close (see [Retro loop](#retro-loop)) — asking is
@@ -57,7 +61,10 @@ The inner build loop — one task to one verified change. Run by a [builder](../
      the fact. On any deviation from the plan or spec, update the plan/spec in the same
      commit (**bidirectional rule**).
   4. **Verify** — execute the task's acceptance checks and the full check suite; watch
-     them pass ([quality gates](../standards/quality-gates.md)).
+     them pass ([quality gates](../standards/quality-gates.md)), and record the observed
+     results in the task file's *Verification* section. Checks are pre-registered — they
+     exist before Build starts; any later edit to them carries an inline
+     `[amended: <reason>]`. An unexplained weakening is a blocking review finding.
   5. **Distill** — sweep discoveries into the KB per the
      [discovery table](../knowledge/ingestion.md#protocol-c-discovery-during-work).
   6. **Close** — self-check the [definition of done](../standards/quality-gates.md#definition-of-done);
@@ -102,7 +109,10 @@ fresh context — in Claude Code, always a separate subagent.
   2. Read the full diff against the [definition of done](../standards/quality-gates.md#definition-of-done)
      and standards.
   3. Independently re-run acceptance checks and the check suite on a checkout of the
-     change. Reported results are claims, not evidence. Checks the reviewer genuinely
+     change. Reported results are claims, not evidence. Run tests *new in this diff*
+     against the base branch too — each must fail there; a new test that passes without
+     the change verifies nothing (blocking). Edits to existing tests or to the task's
+     *Verification* section without an `[amended: …]` reason are blocking. Checks the reviewer genuinely
      cannot execute (manual/UI steps) are judged from the builder's recorded evidence
      and marked *accepted on evidence*, never silently counted as verified.
   4. Hunt for absences: unhandled edge cases, missing tests, security exposure
@@ -127,16 +137,24 @@ Upkeep. Run by a [curator](../agents/roles.md#curator).
   the schedule).
 - **Steps:**
   1. Run the [consistency checks](../knowledge/management.md#consistency-checks)
-     (symbols, anchors, contradictions, commands, assumptions).
+     (symbols, anchors, contradictions, commands, assumptions), and the `audit` command
+     (Commands table): high-severity vulnerabilities become immediate tasks;
+     major-version drift becomes a backlog entry.
   2. Enforce budgets — archive overflow per [management.md](../knowledge/management.md).
      Long-lived *Known dead ends* whose reasons still hold graduate to `derived.md`
      *Gotchas* rather than aging out into the archive.
   3. **Read the retros** since the last maintenance run: recurring gaps, repeated
      `[correction]` tags, or the same review-finding class → these are
      [refinement signals](refinement.md#signals); apply the refinement procedure.
+     Close the read with a counted **pulse** in this run's retro entry: tasks closed /
+     reopened since the last run, `[correction]` entries, open `⏳PO` items (and oldest
+     age), full-suite duration. A pulse worsening across two consecutive runs is a
+     [refinement signal](refinement.md#signals).
   4. Framework prune — per [refinement.md](refinement.md#pruning): sunset checks on
      refinement-added rules, contradiction resolution, compression.
-  5. Repo hygiene sweep within standards: broken links in docs, dead references.
+  5. Repo hygiene sweep within standards: broken links in docs, dead references, and
+     quarantined flaky checks still lacking a queued task
+     ([quality gates](../standards/quality-gates.md#verification-discipline)).
 - **Exit:** trivial repairs applied immediately (each its own small commit); the rest
   queued in `state.md` *Next steps*; `last-verified` updated on all checked docs.
 - **Failure handling:** systemic findings (the same class of rot recurring) are a
