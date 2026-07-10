@@ -8,17 +8,9 @@
 
 *Unfilled — run the derivation procedure below during onboarding.*
 
-<!-- Structure to fill in (keep only sections that earn their place):
-
-## Commands
-The exact invocations for this repo. Command-first — flags included, no prose.
-| Action | Command |
-|--------|---------|
-| install | `...` |
-| build   | `...` |
-| test (all / single file) | `...` |
-| lint + format | `...` |
-| run locally | `...` |
+<!-- Structure to fill in (keep only sections that earn their place).
+     NOTE: the Commands table lives in /AGENTS.md (always-loaded), not here — the
+     derivation procedure below fills it there.
 
 ## Stack
 Languages, frameworks, key libraries WITH VERSIONS, and for each major choice a link to
@@ -48,7 +40,8 @@ Run at onboarding, and re-run any section when its anchors change.
 
 1. **Commands** — read manifests (`package.json`, `Makefile`, `pyproject.toml`, CI
    config…), then *execute* each candidate command to confirm it works before recording
-   it. A documented command that fails is worse than none.
+   it in the Commands table of `/AGENTS.md` (its one home — always loaded). A documented
+   command that fails is worse than none.
 2. **Stack** — inventory direct dependencies and versions from lockfiles/manifests. For
    each major framework choice with no recorded rationale, add it here and note
    `[ASSUMPTION] inherited`.

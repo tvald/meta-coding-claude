@@ -101,5 +101,5 @@ The first run in a project — triggered when `product.md` is unfilled.
 5. **Seed state** — populate `state.md` with the first *Next steps*; record stack ADRs
    for greenfield choices; commit everything.
 
-Onboarding ends when `product.md` has no unfilled sections and `derived.md`'s Commands
-table is verified. Defer anything else to normal loops.
+Onboarding ends when `product.md` has no unfilled sections and the Commands table in
+`/AGENTS.md` is verified. Defer anything else to normal loops.

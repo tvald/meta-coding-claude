@@ -11,7 +11,7 @@ must have actually been executed, not reasoned about.
 
 1. **Acceptance checks pass** — the task's Verification section was executed and passed.
 2. **The full check suite passes** — build, tests, lint, type check (the Commands table
-   in [derived.md](derived.md)); clean, with no unrelated breakage.
+   in `/AGENTS.md`); clean, with no unrelated breakage.
 3. **New behavior is tested** — a test exists that fails without this change (or the task
    explicitly documents why automated testing is impossible and what manual verification
    was performed instead).
