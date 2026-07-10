@@ -64,8 +64,9 @@ must say what failed and what the reader can do about it.
 
 Secrets never enter the repo, logs, or LLM context. Untrusted input is untrusted
 everywhere (injection, path traversal, deserialization). Least privilege for tokens,
-processes, and generated IAM. When code handles auth, money, or PII, the review gate is
-mandatory regardless of change size.
+processes, and generated IAM. Changes altering auth, payment, or PII *behavior* are
+always PO-gated ([quality gates](quality-gates.md#mandatory-po-gates), gate 4); any
+change in those areas gets peer review minimum.
 
 ## 10. Reproducibility
 

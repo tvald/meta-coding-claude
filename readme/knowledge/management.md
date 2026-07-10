@@ -77,9 +77,9 @@ first, archive to make room.
 ## Freshness metadata
 
 Every *stateful* LIVING doc — `product.md`, `glossary.md`, `derived.md`, active specs —
-starts with a metadata block. Exempt: append-only logs (retros, changelog, backlog),
-immutable ADRs, and `state.md` (rewritten every session; its freshness is its git
-mtime):
+starts with a metadata block. Exempt: append-only logs (retros, changelog), the backlog
+(continuously re-prioritized), immutable ADRs, and `state.md` (rewritten every session;
+its freshness is its git mtime):
 
 ```markdown
 <!-- LIVING doc

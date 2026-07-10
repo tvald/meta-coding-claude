@@ -45,7 +45,7 @@ yes):
     "PreToolUse": [
       {
         "matcher": "Bash",
-        "hooks": [{ "type": "prompt", "prompt": "Block (deny) if this command deploys, publishes, migrates real data, deletes data, or sends external communications without the transcript showing explicit PO approval for that action (mandatory gate 2). Otherwise allow." }]
+        "hooks": [{ "type": "prompt", "prompt": "Block (deny) if this command deploys, publishes, migrates real data, deletes data, sends external communications, spends money, or grants access without the transcript showing explicit PO approval for that action (mandatory gate 2). Otherwise allow." }]
       }
     ],
     "Stop": [

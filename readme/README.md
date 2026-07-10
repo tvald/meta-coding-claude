@@ -53,6 +53,7 @@ readme/
     backlog.md        LIVING    known-but-not-now work, priority-ordered
     specs/            LIVING    feature specs (Feature track)
     tasks/            LIVING    task files: verification criteria + review records
+    interviews/       scratch   worksheets, deleted after filing
   templates/                  copy-to-use: spec, adr, task, retro, interview
   log/                        LIVING trails
     framework-changelog.md      audit of framework self-modification

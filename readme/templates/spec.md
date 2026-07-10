@@ -13,6 +13,10 @@
 - **Date:** YYYY-MM-DD
 - **Related:** <!-- links to decisions (ADR numbers), prior specs, external docs -->
 
+<!-- LIVING doc — freshness (readme/knowledge/management.md#freshness-metadata):
+     last-verified: YYYY-MM-DD
+     anchors: (code paths whose change likely invalidates this spec; fill once known) -->
+
 ## Problem
 
 <!-- What user/business problem does this solve? 1–3 sentences. If you can't state it, stop and run the interview protocol (readme/knowledge/ingestion.md). -->

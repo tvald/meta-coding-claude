@@ -57,9 +57,9 @@ or plan — an approach fails, a requirement turns out wrong, a better option ap
 update the doc in the same commit as the divergence. The spec always reflects current
 best knowledge; a stale spec is never the record of anything. If the divergence changes
 what an approved spec *promises* the PO (scope, behavior, cost — when unsure, assume it
-does), additionally: mark the affected requirements `Status: needs-reapproval`, park a
-`⏳PO` re-approval item, pause work that depends on the changed promise, and continue
-work that doesn't. Record an ADR only if the deviation itself meets an
+does), additionally: flip the spec's `Status` to `needs-reapproval` noting inline which
+requirements changed, park a `⏳PO` re-approval item, pause work that depends on the
+changed promise, and continue work that doesn't. Record an ADR only if the deviation itself meets an
 [ADR trigger](../knowledge/decisions/README.md).
 
 ## Escalation
@@ -140,7 +140,8 @@ onboarding.)
    questions, whose answers land in `product.md` → *Delivery*: what does "release" mean
    here (defines gate 3)? any additions to the mandatory-gate list (→ ADR +
    quality-gates edit)? preferred PO check-in cadence? whether to install the
-   recommended enforcement hooks (`.claude/README.md#optional-hooks`). **Greenfield
+   recommended enforcement hooks (`.claude/README.md`, *Optional: deterministic
+   enforcement*). **Greenfield
    additionally:** propose a stack with rationale and get the PO's pick — stack choice
    is expensive to reverse and always PO-gated; record the ADRs.
 5. **Seed state** — populate `state.md` *Next steps* and `readme/work/backlog.md` with
