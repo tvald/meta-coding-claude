@@ -7,9 +7,13 @@ argument-hint: [trigger/scope, e.g. "session" or "the failed migration task"]
 Run the **retro loop** (`readme/process/loops.md#retro-loop`) for `$ARGUMENTS` (default:
 the current session).
 
-- **Cheap form** (the default): three bullets — what happened / gap / change made —
-  appended to `readme/log/retros.md` per `readme/templates/retro.md`. "Gap: none" is the
-  common, honest outcome. Under two minutes; do not inflate.
+- **Cheap form** (the default): three short fields — what happened / gap / change
+  made — dated, inserted at the top of `readme/log/retros.md` per
+  `readme/templates/retro.md`. Fires once per session at close, plus at any loop exit
+  that actually found a gap. "Gap: none" is an honest outcome; don't inflate. **PO
+  corrections always get an entry tagged `[correction]`** — grep `retros.md` (and its
+  archive) for a prior entry on the same topic first; a repeat escalates to the deep
+  form with a mandatory rule change.
 - **Deep form** (on its triggers — check the loop doc): reconstruct believed-vs-true,
   locate the doc or loop that should have prevented it, then apply the fix through the
   **refinement procedure** in `readme/process/refinement.md` — smallest edit, effective

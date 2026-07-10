@@ -1,7 +1,6 @@
 ---
 name: onboard
 description: First-run onboarding — survey the repo, derive standards, fill product.md through an interview, seed state. Use when the framework was just seeded into a project, or when readme/knowledge/product.md is unfilled.
-disable-model-invocation: true
 ---
 
 Run the **onboarding procedure** in `readme/process/orchestration.md#onboarding` — read
@@ -9,7 +8,7 @@ it now, then execute its five steps in order. Operating notes:
 
 - The repo survey and standards derivation (existing repos) can be delegated to the
   `analyst` subagent; verify every command by execution before writing it to the
-  Commands table in `/AGENTS.md`.
+  Commands table in the repo-root `AGENTS.md`.
 - Conduct the interview yourself per
   `readme/knowledge/ingestion.md#protocol-b-po-interview`: 1–3 questions per message,
   best-guess defaults offered with every question, evidence-based drafts presented for

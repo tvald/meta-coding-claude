@@ -9,7 +9,7 @@ piece of work gets skipped, by routing, not by improvisation.
 
 ## Routing
 
-This table is the **canonical** routing rule (`/AGENTS.md` carries a summary). Classify
+This table is the **canonical** routing rule (the repo-root `AGENTS.md` carries a summary). Classify
 every incoming piece of work — a PO request, a `state.md` next-step, a backlog item, a
 discovered defect — into a track. When torn between two tracks, take the lighter one
 unless a [mandatory gate](../standards/quality-gates.md#mandatory-po-gates) **2–4**
@@ -128,7 +128,7 @@ onboarding.)
 1. **Inventory** — is there code? existing docs (README, wikis, old CLAUDE.md)? CI?
 2. **Existing repo:** survey the codebase (structure, stack, entry points, test state) →
    run the [derivation procedure](../standards/derived.md#derivation-procedure)
-   (fills the Commands table in `/AGENTS.md`) → ingest existing docs via
+   (fills the Commands table in the repo-root `AGENTS.md`) → ingest existing docs via
    [Protocol A](../knowledge/ingestion.md#protocol-a-document-synthesis)
    (existing docs are *sources*, not truth — reconcile against code) → draft
    `product.md` from evidence, everything `[ASSUMPTION]`-marked.
@@ -148,11 +148,11 @@ onboarding.)
 6. **Greenfield bootstrap** — scaffold the repo as a normal **Feature-track item**
    whose spec is `product.md` plus the stack ADRs (gate 1 already satisfied by the
    interview): initialize the project, set up build/test/lint, verify each command and
-   fill the Commands table in `/AGENTS.md`. This is ordinary routed work — task loop,
+   fill the Commands table in the repo-root `AGENTS.md`. This is ordinary routed work — task loop,
    verification, review — not a special onboarding mode.
 
 Onboarding ends when `product.md` has no unfilled sections and the Commands table in
-`/AGENTS.md` is verified (for greenfield, that means the bootstrap item is done). Defer
+the repo-root `AGENTS.md` is verified (for greenfield, that means the bootstrap item is done). Defer
 everything else to normal loops. If the PO is absent mid-interview, park the remaining
 questions `⏳PO` decision-ready and end the session cleanly — a parked onboarding is the
 correct outcome, not a failure.

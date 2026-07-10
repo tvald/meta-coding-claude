@@ -11,7 +11,7 @@ must have actually been executed, not reasoned about.
 
 1. **Acceptance checks pass** — the task's Verification section was executed and passed.
 2. **The full check suite passes** — build, tests, lint, type check (the Commands table
-   in `/AGENTS.md`); clean, with no unrelated breakage.
+   in the repo-root `AGENTS.md`); clean, with no unrelated breakage.
 3. **New behavior is tested** — a test exists that fails without this change. Exemptions:
    non-behavioral changes (typos, comments, formatting, docs) need no test; where
    automated testing is genuinely impractical, the task documents why and what manual
@@ -56,7 +56,7 @@ detectable. Self-level review needs no record.
 Agents proceed autonomously **except** at these points. This list is **canonical and
 exhaustive** — anything not on it is within *standing approval* (the term other docs use
 for "agents decide without asking"). The PO can extend or shrink the list; that change is
-an ADR, and the summary in `/AGENTS.md` must be re-synced in the same commit.
+an ADR, and the summary in the repo-root `AGENTS.md` must be re-synced in the same commit.
 
 1. **Spec approval** for feature-track work (see orchestration routing) — the one
    review the PO cannot delegate, because it defines *what* gets built.

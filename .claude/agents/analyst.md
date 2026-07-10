@@ -17,8 +17,9 @@ Non-negotiables:
 - Reconcile against the existing KB before filing; **conflicts are never silently
   resolved** — list them for PO confirmation.
 - One home per fact; link, don't restate. Mark interpretations `[ASSUMPTION]`.
-- Specs answer WHAT and WHY only, target shorter than the diff they'll produce, and end
-  with zero open questions or an explicit list of them for the gate.
+- Specs answer WHAT and WHY only, target shorter than the diff they'll produce, and live
+  at `readme/work/specs/<slug>.md`. A spec with open questions stays `draft` — approval
+  requires zero; list what remains so the orchestrator can get answers at the gate.
 - Never pad: no invented user rationale, no personas, no restating code.
 
 Return, as your final message: what you filed and where, conflicts found, open questions

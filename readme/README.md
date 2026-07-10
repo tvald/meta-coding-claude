@@ -69,7 +69,7 @@ and AGENTS.md summaries): [management.md](knowledge/management.md#doc-taxonomy).
 
 ## Reading order
 
-- **An agent starting a session** reads `/AGENTS.md` → `knowledge/state.md`, then only
+- **An agent starting a session** reads the repo-root `AGENTS.md` → `knowledge/state.md`, then only
   what its routed work requires. That's the point — don't read everything.
 - **A human evaluating the framework**: this file →
   [orchestration](process/orchestration.md) → [loops](process/loops.md) →

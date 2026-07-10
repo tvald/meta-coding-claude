@@ -40,7 +40,7 @@ Run at onboarding, and re-run any section when its anchors change.
 
 1. **Commands** — read manifests (`package.json`, `Makefile`, `pyproject.toml`, CI
    config…), then *execute* each candidate command to confirm it works before recording
-   it in the Commands table of `/AGENTS.md` (its one home — always loaded). A documented
+   it in the Commands table of the repo-root `AGENTS.md` (its one home — always loaded). A documented
    command that fails is worse than none.
 2. **Stack** — inventory direct dependencies and versions from lockfiles/manifests. For
    each major framework choice with no recorded rationale, add it here and note

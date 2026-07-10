@@ -64,7 +64,9 @@ The code-out role. Runs the [task loop](../process/loops.md#task-loop).
 - **Authority:** implementation decisions within standards and prior ADRs (recording new
   ADRs where [triggers](../knowledge/decisions/README.md) fire).
 - **Must not:** claim done without executing verification; exceed task scope (drive-by
-  refactors); leave knowledge updates "for later"; continue past a mandatory-gate trigger.
+  refactors); leave knowledge updates "for later" (isolated builders *stage* them in the
+  task file per the single-writer rule — that is filing, not deferring); continue past a
+  mandatory-gate trigger.
 
 ## Reviewer
 
