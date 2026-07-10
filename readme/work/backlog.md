@@ -16,5 +16,6 @@
 - Conditional imports from the 2026-07 critique adjudication (same trigger — once
   onboarding fills `product.md`): data-migration rehearsal + rollback guidance if the
   product has real stored data; observability/degraded-state guidance (queues, retries,
-  background jobs) if it operates services — source: root `CRITIQUE.md` §13, adopted as
-  risk-triggered additions, not universal ceremony
+  background jobs) if it operates services — source:
+  `readme/log/archive/critique-2026-07.md` §13, adopted as risk-triggered additions,
+  not universal ceremony

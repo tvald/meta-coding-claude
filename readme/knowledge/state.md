@@ -21,7 +21,7 @@
 - 2026-07-10: Adjudicated PO-placed `CRITIQUE.md` — 9 recommendations adopted (dirty-tree
   ownership, commit-authority policy, gate-4 breadth, retention, suite scaling, +4 more),
   4 rejected with reasons; disposition: `readme/log/archive/critique-response-2026-07.md`.
-  `CRITIQUE.md` left in place for the PO — propose archiving it there once read.
+  Source archived (PO-approved) as `readme/log/archive/critique-2026-07.md`.
 - 2026-07-10: Wrote repo-root `README.md` — human/PO-facing overview of the framework
   (PO request; Quick track, self-reviewed).
 - 2026-07-10: PO-directed critique of an alternative meta-framework (written to

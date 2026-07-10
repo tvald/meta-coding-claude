@@ -1,7 +1,8 @@
 <!-- Historical record — adjudication of the external critique the PO placed at
-     /CRITIQUE.md on 2026-07-10. One entry per recommendation: adopted (with the edit)
-     or rejected (with the reason). Rejections here are decisions — do not re-adopt a
-     rejected item without new evidence or PO direction. -->
+     /CRITIQUE.md on 2026-07-10 (now archived as critique-2026-07.md beside this file).
+     One entry per recommendation: adopted (with the edit) or rejected (with the
+     reason). Rejections here are decisions — do not re-adopt a rejected item without
+     new evidence or PO direction. -->
 
 # Disposition: external framework critique (2026-07)
 
