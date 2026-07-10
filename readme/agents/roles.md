@@ -42,7 +42,10 @@ The main session agent. There is exactly one.
 - **Authority:** everything not on the mandatory-gate list; choosing tracks and review
   levels; splitting/re-scoping work.
 - **Must not:** implement non-trivial changes without entering the task loop; review its
-  own implementation work at peer level; let a blocked gate stall unrelated work.
+  own implementation work at peer level; let a blocked gate stall unrelated work;
+  absorb a killed or failed spawned role's work inline → park it as a durable checkpoint
+  and restart the role (from the checkpoint, or from the start if none exists) — inline
+  absorption inflates cost and loses the role's independence.
 
 ## Analyst
 

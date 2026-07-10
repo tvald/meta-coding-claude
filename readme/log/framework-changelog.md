@@ -8,6 +8,7 @@
 
 | Date | Doc | Change | Trigger |
 |------|-----|--------|---------|
+| 2026-07-10 | agents/roles.md | Orchestrator must-not: never absorb a killed spawned role's work inline — checkpoint and restart the role | PO feedback (`[correction]` retro logged); authority-boundary change PO-approved by the same instruction |
 | 2026-07-10 | .claude/agents/*, .claude/README.md | Model tiering: reviewer→Opus, analyst/builder/curator→Sonnet; orchestrator keeps strongest model | PO feedback: subagents on simpler models to conserve usage limits (`[correction]` retro logged) |
 | 2026-07-10 | quality-gates.md | Gate presentations: ≤10-line what/recommendation/on-yes/on-no format; stale gated items re-presented once after two maintenance runs, then parked to backlog if non-blocking | Round-2 refinement (PO-ergonomics angle; judged inline — subagent capacity unavailable) |
 | 2026-07-10 | loops.md | Session boot opens with a ≤10-line catch-up digest when the PO returns after a long gap | Round-2 refinement (PO-ergonomics; inline judge) |
