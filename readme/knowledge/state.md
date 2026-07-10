@@ -18,6 +18,12 @@
 <!-- Last few completed items, newest first. One line each. Prune aggressively —
      git history is the full record. -->
 
+- 2026-07-10: PO-directed critique of an alternative meta-framework (written to
+  `tmp/CRITIQUE.md`, deliberately uncommitted); imported source-trust tiers +
+  decaying-facts rule (ingestion.md), untrusted-evidence rule (engineering.md §9), and
+  gate-presentation content (quality-gates.md) — see framework changelog; conditional
+  imports parked in backlog.
+
 ## Next steps
 
 <!-- The immediate queue only, priority order, ≤10 items: follow-ups, repair actions,

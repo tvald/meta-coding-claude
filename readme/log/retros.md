@@ -4,6 +4,30 @@
 
 # Retros
 
+# Retro: 2026-07-10 — alternative-framework review session
+
+- **Trigger:** session close (PO-directed comparative review)
+- **Scope:** critique of tmp/ framework + import refinements
+
+## What happened
+
+Reviewed an external meta-framework end-to-end, wrote the critique (tmp/, uncommitted
+per PO instruction), and imported five concepts as three doc refinements (trust tiers,
+decaying facts, untrusted-evidence rule, gate presentation content).
+
+## Gap
+
+The imported security rules covered a real hole (ingested material had no trust
+classification), and no internal refinement signal would ever have surfaced it —
+signals are incident-driven, and this gap only shows up as an incident *after*
+a prompt-injection event. Found only because the PO commissioned an external
+comparison. Single occurrence; no rule change — but if a second external comparison
+finds another silent gap, consider a periodic benchmarking practice.
+
+## Change made
+
+None beyond the imports themselves (logged in the framework changelog).
+
 # Retro: 2026-07-10 [correction] PO feedback — no inline fallback
 
 - **Trigger:** [correction] PO feedback

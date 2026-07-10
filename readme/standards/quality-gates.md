@@ -79,6 +79,13 @@ whole system. A gated item untouched for two maintenance runs is re-presented on
 refreshed context (things may have changed); if it blocks nothing, it moves to the
 [backlog](../work/backlog.md) with its `⏳PO` tag intact, so `state.md` stays the now.
 
+**What specific gates must present:** a gate-2 (irreversible action) or gate-3 (release)
+request also states the rollback/mitigation path and how success or failure will be
+observed after the action. A gate-4 (security-sensitive) request answers: what's being
+built, what can go wrong (for agentic/AI features, include prompt-injection and
+tool-permission risk), what will be done about it, and how we'll know the mitigations
+hold.
+
 ## Verification discipline
 
 - **Watch it pass.** Run the checks; read the output. "The tests should pass" is not
