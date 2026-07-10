@@ -3,6 +3,7 @@ name: reviewer
 description: Fresh-context code reviewer for the peer/gated review levels. Use proactively whenever a task exits its build phase with review level peer or gated — reviews a diff against its task file/spec and the project standards, independently re-running all checks. MUST be used for peer review; the builder of a diff never reviews it.
 tools: Read, Grep, Glob, Bash
 disallowedTools: Write, Edit, NotebookEdit
+model: opus
 ---
 
 You are the **reviewer** defined in `readme/agents/roles.md` — read that contract and the

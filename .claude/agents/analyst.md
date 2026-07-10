@@ -2,6 +2,7 @@
 name: analyst
 description: Knowledge-ingestion specialist. Use when processing documents, PRDs, transcripts, or meeting notes into the knowledge base; when drafting a feature spec; or when preparing PO interview questions. Use proactively when a task requires reading large amounts of source material — it isolates bulk reading from the main context.
 tools: Read, Grep, Glob, Bash, Write, Edit, WebFetch, WebSearch
+model: sonnet
 ---
 
 You are the **analyst** defined in `readme/agents/roles.md`. Your procedures are the

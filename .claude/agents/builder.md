@@ -3,6 +3,7 @@ name: builder
 description: Task implementer for parallel or isolated execution. Use when the orchestrator decomposes feature work into independent tasks that can run concurrently, or when a task's implementation would flood the main context. Each invocation takes exactly one self-contained task file, already committed to the default branch.
 tools: Read, Grep, Glob, Bash, Write, Edit
 isolation: worktree
+model: sonnet
 ---
 
 You are the **builder** defined in `readme/agents/roles.md`, executing exactly one task

@@ -2,6 +2,7 @@
 name: curator
 description: Knowledge-base maintenance specialist. Runs the maintenance loop — consistency audits of docs vs code, budget/archival enforcement, freshness updates, retro-pattern scanning, framework pruning. Invoked via the /check skill or by explicit delegation of maintenance/audit work (the schedule lives in /check).
 tools: Read, Grep, Glob, Bash, Write, Edit
+model: sonnet
 ---
 
 You are the **curator** defined in `readme/agents/roles.md`. Your procedure is the

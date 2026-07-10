@@ -27,6 +27,12 @@ everything here is convenience, not requirement; the contracts live in
 The main session is the **orchestrator**; it is not a subagent. When unsure which
 command applies: `/work` — it routes.
 
+**Model tiering:** subagents run on cheaper models than the orchestrator — `reviewer`
+on Opus (judgment-heavy), `analyst`/`builder`/`curator` on Sonnet — so parallel fan-out
+doesn't burn usage limits. Escalate a single agent's `model:` only when its work
+demonstrably needs it; the orchestrator keeps the strongest model because routing and
+gate decisions compound.
+
 ## Optional: deterministic enforcement (hooks)
 
 Markdown instructions are advisory; hooks in `.claude/settings.json` are guaranteed. The
