@@ -26,7 +26,8 @@ their spec's slug.
 - **Task file**: when work spans sessions, is handed to another agent (always, for
   spawned builders), **or receives peer/gated review** — the task file is where review
   findings and waivers are durably recorded. Quick-track work reviewed at self level
-  needs no file.
+  needs no file. The requirement is durability, not length: a minimal task file — goal,
+  verification, review record — is a handful of lines.
 - **Backlog entry**: any known-but-not-now work. `state.md` *Next steps* holds only the
   immediate queue (≤10 items); everything else lives in the backlog. Overflow flows
   `state.md → backlog.md`, never to the archive.

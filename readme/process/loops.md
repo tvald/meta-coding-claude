@@ -33,7 +33,10 @@ The outermost loop — wraps everything a working session does.
   session's goal via the [orchestration table](orchestration.md#routing). If the PO gave
   no goal, take the top unblocked item of *Next steps* in `state.md`, then the top of
   the [backlog](../work/backlog.md); if both are empty, run the
-  [Maintenance loop](#maintenance-loop).
+  [Maintenance loop](#maintenance-loop). If the PO returns after a long gap, open with a
+  ≤10-line catch-up digest — shipped / in-flight / parked `⏳PO` / notable process
+  changes — built from `state.md` and the changelog; never make the PO reconstruct it
+  from git.
 - **Work:** run the routed loops below.
 - **Close (never skip, even on failure):** update `state.md` (current focus, recently
   done, next steps, dead ends) → ensure work is committed → retro

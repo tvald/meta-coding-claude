@@ -72,9 +72,12 @@ an ADR, and the summary in the repo-root `AGENTS.md` must be re-synced in the sa
 
 **Gate mechanics:** when work hits a gate, the agent (a) prepares everything reviewable
 (the spec, the diff, the ADR), (b) records the pending gate in `state.md` under *Next
-steps* marked `⏳PO`, (c) presents the PO a decision-ready summary — what's proposed, the
-default recommendation, and what happens on approval — and (d) moves on to other work if
-any is available. Gates block *the gated item*, never the whole system.
+steps* marked `⏳PO`, (c) presents the PO a decision-ready summary in ≤10 lines — what's
+proposed / the default recommendation / what happens on yes / what happens on no — and
+(d) moves on to other work if any is available. Gates block *the gated item*, never the
+whole system. A gated item untouched for two maintenance runs is re-presented once with
+refreshed context (things may have changed); if it blocks nothing, it moves to the
+[backlog](../work/backlog.md) with its `⏳PO` tag intact, so `state.md` stays the now.
 
 ## Verification discipline
 

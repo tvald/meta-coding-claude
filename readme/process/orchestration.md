@@ -45,7 +45,9 @@ trigger; genuine uncertainty about what the PO wants.
 3. **Decompose** — split into S/M tasks (sizes defined in the
    [task template](../templates/task.md)) as `readme/work/tasks/<slug>.md` files where
    [warranted](../work/README.md), with per-task verification derived from the spec's
-   acceptance checks. Order by dependency; identify what can run in parallel.
+   acceptance checks, and each task's *KB refs* line citing the ADRs, glossary terms,
+   and gotchas it must respect — fresh-context builders don't reliably discover
+   relevance on their own. Order by dependency; identify what can run in parallel.
 4. **Build** — task loops, parallel where independent (below).
 5. **Integrate** — after all tasks close: run the full suite on the combined result,
    execute the spec's acceptance checks end-to-end, then mark the spec `implemented` —

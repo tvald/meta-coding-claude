@@ -69,6 +69,9 @@ questions blocking a spec, or accumulated `[ASSUMPTION]` markers. Worksheet:
 - **Scale the total to the stakes.** A small feature deserves ≤10 questions; a new
   product 30–40; never more than ~50 in any ingestion effort. If you still lack clarity
   after that, the gap is a discovery task (prototype, research), not more questions.
+- **Walk scenarios; probe the negative space.** A concrete walk-through ("a user does
+  X — what should happen?") surfaces more than abstract questions, and *"what must NOT
+  change?"* surfaces the constraints nobody volunteers.
 - **"I don't know" is an answer.** File it as an open question with your default adopted
   as `[ASSUMPTION]`, and move on.
 - **Implementation starts from the written artifact, not the conversation.** Synthesize

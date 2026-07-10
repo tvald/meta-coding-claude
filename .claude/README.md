@@ -24,7 +24,8 @@ everything here is convenience, not requirement; the contracts live in
 | `skills/retro` | `/retro` — run a retro |
 | `skills/check` | `/check` — maintenance audit (forks into the curator) |
 
-The main session is the **orchestrator**; it is not a subagent.
+The main session is the **orchestrator**; it is not a subagent. When unsure which
+command applies: `/work` — it routes.
 
 ## Optional: deterministic enforcement (hooks)
 

@@ -9,6 +9,9 @@
 - **Spec:** <!-- link to spec, or "direct" for maintenance/chore work -->
 - **Status:** pending | in-progress | blocked | done
 - **Size guess:** S (<1h) | M (single session) | L (must be split — do not start an L)
+- **KB refs:** <!-- the ADRs, glossary terms, and derived.md gotchas this task must
+     respect — cited at decompose/plan time. A fresh-context builder does not reliably
+     discover relevance on its own; this line is the retrieval mechanism. -->
 
 ## Goal
 

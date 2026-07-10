@@ -8,6 +8,11 @@
 
 | Date | Doc | Change | Trigger |
 |------|-----|--------|---------|
+| 2026-07-10 | quality-gates.md | Gate presentations: ≤10-line what/recommendation/on-yes/on-no format; stale gated items re-presented once after two maintenance runs, then parked to backlog if non-blocking | Round-2 refinement (PO-ergonomics angle; judged inline — subagent capacity unavailable) |
+| 2026-07-10 | loops.md | Session boot opens with a ≤10-line catch-up digest when the PO returns after a long gap | Round-2 refinement (PO-ergonomics; inline judge) |
+| 2026-07-10 | ingestion.md | Interview technique: concrete scenario walk-throughs + "what must NOT change?" negative-space probing | Round-2 refinement (knowledge-depth; inline judge) |
+| 2026-07-10 | templates/task.md, orchestration.md | KB refs line on task files, cited at decompose time — retrieval mechanism for fresh-context builders | Round-2 refinement (knowledge-depth; inline judge) |
+| 2026-07-10 | work/README.md, .claude/README.md | Minimal-task-file clarification (durability, not length); "when unsure: /work" pointer | Round-2 refinement (friction; inline judge) |
 | 2026-07-10 | loops.md, quality-gates.md | Pre-registered verification: observed results recorded; check edits need `[amended: reason]`; reviewer runs new tests on base branch (must fail); unexplained check weakening blocking | Round-1 refinement: reward-hacking/check-weakening gap (ideas 7/8/13/14 merged) |
 | 2026-07-10 | loops.md, roles.md | Context-budget rule: hand off at ~2/3 context at next verified increment; spawned roles return condensed results, not transcripts | Round-1 refinement: context-rot gap (idea 15) |
 | 2026-07-10 | quality-gates.md, loops.md | Flake discipline: pass-on-rerun is a defect — fix or quarantine with queued task; maintenance sweeps quarantine | Round-1 refinement: suite-trust gap (idea 1) |
