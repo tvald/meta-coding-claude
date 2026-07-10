@@ -25,9 +25,10 @@ cannot force the track); mid-flight upgrade is cheap (see [Escalation](#escalati
 | **Maintenance** | upkeep with no product-visible change: consistency repairs, refactors, dependency updates | [maintenance loop](loops.md#maintenance-loop) or task loop | self (peer if behavior could change) |
 
 Signals that force the **feature** track regardless of apparent size: altering the
-*behavior* of auth, payments, PII handling, stored-data formats, or external contracts
-(non-behavioral edits in those areas route normally, peer review minimum); any gate 2–4
-trigger; genuine uncertainty about what the PO wants.
+*behavior* of auth/authorization, secrets or credential handling, payments, personal or
+regulated data, stored-data formats, external contracts, or the permissions of
+agents/CI/infrastructure (non-behavioral edits in those areas route normally, peer
+review minimum); any gate 2–4 trigger; genuine uncertainty about what the PO wants.
 
 ## The feature track
 
@@ -123,6 +124,14 @@ directly to the default branch. If the project adopts PRs/CI (a *Delivery* fact 
 merge rule is what matters, not the mechanism. Pushing/publishing beyond the local repo
 follows gate 2.
 
+**Git authority is a project policy, not a framework assumption.** Committing is the
+default checkpoint, but onboarding records the permitted workflow in `product.md` →
+*Delivery* (commit freely / commit on branches only / edits without commits). Where
+commits are withheld, every "commit" step in the loops degrades to: a clean working-tree
+diff plus staged notes in the task file or `state.md`, handed to the human to commit —
+and "same commit" in the knowledge rules reads "same coherent change". Worktree-isolated
+parallel builders require branch/commit authority; without it, run tasks sequentially.
+
 ## Gates in practice
 
 Mechanics in [quality-gates.md](../standards/quality-gates.md#mandatory-po-gates). The
@@ -149,7 +158,9 @@ onboarding.)
    existing repo: confirm the drafted `product.md` and resolve step-2 conflicts;
    greenfield: fill `product.md` section by section. Always ask the onboarding-specific
    questions, whose answers land in `product.md` → *Delivery*: what does "release" mean
-   here (defines gate 3)? any additions to the mandatory-gate list (→ ADR +
+   here (defines gate 3)? what Git workflow may agents use — commit freely, branches
+   only, or edits without commits ([integration mechanics](#integration-mechanics))?
+   any additions to the mandatory-gate list (→ ADR +
    quality-gates edit)? preferred PO check-in cadence? whether to install the
    recommended enforcement hooks (`.claude/README.md`, *Optional: deterministic
    enforcement*). **Greenfield
@@ -157,7 +168,9 @@ onboarding.)
    is expensive to reverse, and this interview approval *is* its gate (gate 1: the stack
    ADRs form part of the bootstrap item's spec); record the ADRs.
 5. **Seed state** — populate `state.md` *Next steps* and `readme/work/backlog.md` with
-   whatever the interview surfaced; commit everything.
+   whatever the interview surfaced; flip [ADR 0001](../knowledge/decisions/0001-adopt-agentic-framework.md)
+   from `proposed` to `accepted`, dated to this onboarding (the PO seeding the kit and
+   confirming it in the interview is the adoption decision); commit everything.
 6. **Greenfield bootstrap** — scaffold the repo as a normal **Feature-track item**
    whose spec is `product.md` plus the stack ADRs (gate 1 already satisfied by the
    interview): initialize the project, set up build/test/lint, verify each command and

@@ -54,9 +54,11 @@ first, archive to make room.
 
 ## Rules of the knowledge base
 
-1. **One home per fact.** Every fact lives in exactly one file; everything else links to
-   it. If you find the same fact stated in two places, that is a defect — fix it by
-   picking the canonical home and replacing the other with a link.
+1. **One canonical home per fact.** Every fact has exactly one owning file; everything
+   else links to it, or condenses it as a marked *(summary)* that identifies the owner
+   (see above) and is re-synced in the same commit as any change to the canonical
+   statement. The same fact *stated* independently in two places is a defect — fix it by
+   picking the canonical home and replacing the other with a link or marked summary.
 2. **Update in the same commit.** Knowledge updates ride along with the change that made
    them true. A separate "update the docs" chore will never happen. If a code change
    renames a concept, the same commit updates the glossary, specs, and any doc that
@@ -99,9 +101,10 @@ The maintenance loop (see [../process/loops.md](../process/loops.md)) runs these
 Any agent may also run them ad hoc when something feels off.
 
 1. **Symbol check** — extract backticked identifiers and file paths from every KB doc;
-   verify each still exists in the repo (`grep`/glob). Missing → doc is stale. Skip
-   identifiers inside HTML comments and explicitly marked examples — they illustrate,
-   not claim.
+   verify each still exists in the repo (`grep`/glob). Missing → the doc *needs review*
+   (usually drift, sometimes a command or conceptual name the check can't resolve —
+   confirm before "fixing"). Skip identifiers inside HTML comments and explicitly
+   marked examples — they illustrate, not claim.
 2. **Anchor check** — for each LIVING doc, compare `last-verified` against the git
    modification dates of its `anchors`. Anchor newer than verification → re-verify.
 3. **Contradiction check** — read the KB end to end (it is small by design) and flag
@@ -114,7 +117,9 @@ Any agent may also run them ad hoc when something feels off.
 
 Findings become repair actions executed immediately when trivial, or queued in
 `state.md` under *Next steps* when not. After a full audit, update `last-verified` on
-every checked doc.
+every checked doc. These checks are signals, not proof: a check that repeatedly flags
+non-problems is itself a [refinement signal](../process/refinement.md#signals) — narrow
+it or prune it.
 
 ## What does NOT go in the KB
 

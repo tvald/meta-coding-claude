@@ -11,14 +11,17 @@ Keep this file under ~150 lines (see `readme/process/refinement.md`).
 
 1. Read `readme/knowledge/state.md`. If it disagrees with recent `git log` (a crashed
    session didn't close), reconcile it from git before anything else. A dirty working
-   tree means a session was interrupted mid-change — resume that work before taking new.
+   tree is evidence to investigate, not proof of ownership: inspect the diff; resume it
+   only if a task file, branch, or `state.md` identifies it as interrupted agent work;
+   otherwise preserve it untouched and work around it (ask only on overlap).
 2. If `readme/knowledge/product.md` is unfilled → run
    [onboarding](readme/process/orchestration.md#onboarding) first. Exception: a small
    concrete PO request (Quick/Standard track) may be served before onboarding; Feature
    work may not.
 3. Route the work using the table below; run the matching loop from
    `readme/process/loops.md`.
-4. Before ending a session: update `state.md`, commit, retro
+4. Before ending a session: update `state.md`, commit (or the checkpoint the project's
+   Git policy allows — `readme/process/orchestration.md#integration-mechanics`), retro
    (`readme/process/loops.md#retro-loop`).
 
 ## Commands
@@ -53,9 +56,10 @@ present (gate 1 only applies once work is Feature-tracked).
 | documents/answers/knowledge to process | Knowledge | ingestion loop |
 | upkeep, refactors, consistency repairs | Maintenance | maintenance loop |
 
-Changes that **alter behavior** of auth, payments, PII handling, stored-data formats, or
-external contracts → always Feature track. Non-behavioral edits in those areas route
-normally but get peer review minimum.
+Changes that **alter behavior** of auth/authorization, secrets or credential handling,
+payments, personal or regulated data, stored-data formats, external contracts, or the
+permissions of agents/CI/infrastructure → always Feature track. Non-behavioral edits in
+those areas route normally but get peer review minimum.
 
 ## Hard rules
 

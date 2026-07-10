@@ -10,8 +10,12 @@ task loop — an agent claiming completion asserts each item, and the verificati
 must have actually been executed, not reasoned about.
 
 1. **Acceptance checks pass** — the task's Verification section was executed and passed.
-2. **The full check suite passes** — build, tests, lint, type check (the Commands table
-   in the repo-root `AGENTS.md`); clean, with no unrelated breakage.
+2. **The check suite passes** — build, tests, lint, type check (the Commands table
+   in the repo-root `AGENTS.md`); clean, with no unrelated breakage. The full suite is
+   the default. Where onboarding found it expensive and recorded a task-level subset in
+   the Commands table (affected tests + fast static checks), tasks run that subset and
+   the full suite runs at integration/merge and release — never less than the recorded
+   subset, and skipping a normally relevant check needs a stated reason in the task.
 3. **New behavior is tested** — a test exists that fails without this change. Exemptions:
    non-behavioral changes (typos, comments, formatting, docs) need no test; where
    automated testing is genuinely impractical, the task documents why and what manual
@@ -65,10 +69,12 @@ an ADR, and the summary in the repo-root `AGENTS.md` must be re-synced in the sa
    spending money, granting access.
 3. **Release** — whatever "release" means for this project (defined during onboarding,
    recorded in [product.md](../knowledge/product.md) → *Delivery*).
-4. **Security-sensitive changes** — anything altering the *behavior* of auth, payments,
-   or PII handling: PO sign-off on the approach (the spec or ADR), regardless of change
-   size. Non-behavioral edits in those areas (typos, comments, formatting) are not
-   gated — they route normally with peer review minimum.
+4. **Security-sensitive changes** — anything altering the *behavior* of authentication
+   or authorization, secrets/credential handling, payments, personal or regulated data
+   handling, or the permissions granted to agents, CI/CD, or infrastructure: PO sign-off
+   on the approach (the spec or ADR), regardless of change size. Non-behavioral edits in
+   those areas (typos, comments, formatting) are not gated — they route normally with
+   peer review minimum.
 
 **Gate mechanics:** when work hits a gate, the agent (a) prepares everything reviewable
 (the spec, the diff, the ADR), (b) records the pending gate in `state.md` under *Next
@@ -102,7 +108,10 @@ hold.
 ## Escaped defects
 
 A defect discovered after its task closed (worst case: after release): **revert first**
-when a clean revert exists — restore known-good, then diagnose. **Disclose proactively**
+when a clean revert exists — restore known-good, then diagnose. A revert is *clean* only
+when it doesn't corrupt or strand data, roll back a forward-only migration, reintroduce
+a fixed vulnerability, or break a published contract; when any of those hold, contain
+forward instead (disable the path, patch, or fix ahead) and say why revert was unsafe. **Disclose proactively**
 — record it in `state.md`, and if the defect was externally visible, tell the PO in the
 next interaction rather than waiting to be asked. The fix **carries a regression test**
 that fails on the defect — no exemptions. Then run the deep retro

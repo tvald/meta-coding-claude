@@ -39,8 +39,12 @@ The outermost loop — wraps everything a working session does.
 - **Boot:** read [state.md](../knowledge/state.md) (the now). If it disagrees with
   recent `git log` — commits it doesn't reflect — the previous session crashed before
   closing: reconcile *Recently done* / *Current focus* from git first. A dirty working
-  tree or a stray task branch means a session was interrupted mid-change, not just before
-  closing — resume that work from its diff/task file before taking anything new. Then
+  tree or a stray task branch is **evidence to investigate, not proof of ownership**:
+  inspect the status/diff without modifying it, and look for a task file, branch name, or
+  `state.md` entry that explains it. Work clearly interrupted mid-change by an agent is
+  resumed from its diff/task file before taking anything new; changes with no such trace
+  may be the PO's or another tool's — preserve them untouched, work around them when
+  scopes don't overlap, and ask only when overlap makes that impossible. Then
   route the session's goal via the [orchestration table](orchestration.md#routing). If
   the PO gave
   no goal, take the top unblocked item of *Next steps* in `state.md`, then the top of
@@ -51,7 +55,10 @@ The outermost loop — wraps everything a working session does.
   from git.
 - **Work:** run the routed loops below.
 - **Close (never skip, even on failure):** update `state.md` (current focus, recently
-  done, next steps, dead ends) → ensure work is committed → retro
+  done, next steps, dead ends) → ensure work is durably checkpointed — committed by
+  default; where project policy withholds commit authority
+  ([orchestration](orchestration.md#integration-mechanics)), a clean working-tree diff
+  plus task-file notes → retro
   ([cheap form](#retro-loop)). Scale it to the session: a one-quick-task session closes
   with a one-line *Recently done* entry and the retro question.
 - **Exit:** `state.md` accurately describes the world for the next session. A session
@@ -126,7 +133,10 @@ fresh context — in Claude Code, always a separate subagent.
   3. Independently re-run acceptance checks and the check suite on a checkout of the
      change. Reported results are claims, not evidence. Run tests *new in this diff*
      against the base branch too — each must fail there; a new test that passes without
-     the change verifies nothing (blocking). Edits to existing tests or to the task's
+     the change verifies nothing (blocking). When a base checkout is genuinely
+     impractical (migrations, generated assets, dependency drift), establish the same
+     counterfactual confidence another way — revert the code change in place, or mutate
+     the behavior under test — and record which method was used. Edits to existing tests or to the task's
      *Verification* section without an `[amended: …]` reason are blocking. Checks the reviewer genuinely
      cannot execute (manual/UI steps) are judged from the builder's recorded evidence
      and marked *accepted on evidence*, never silently counted as verified.

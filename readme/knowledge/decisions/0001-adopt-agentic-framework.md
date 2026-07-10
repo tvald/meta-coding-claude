@@ -1,6 +1,8 @@
 # 0001. Adopt this agentic development framework
 
-- **Status:** accepted
+- **Status:** proposed <!-- flipped to accepted during onboarding, when the PO actually
+     adopts the framework in this project (orchestration.md#onboarding, step 5) — a seed
+     must not arrive as an already-made decision -->
 - **Date:** 2026-07-10 <!-- kit build date; update to the seeding date when the kit lands in a project -->
 - **Decided by:** PO
 
@@ -22,9 +24,8 @@ framework refines itself from feedback and observed gaps.
 - **No process (raw prompting)** — fast at first; loses context across sessions, quality
   drifts, PO becomes the bottleneck for all memory.
 - **Heavyweight spec-driven frameworks** (full spec/plan/tasks pipeline for every change)
-  — public evaluations consistently find them several-fold slower on small changes,
-  producing documentation that outweighs the code; rejected in favor of proportional
-  ceremony.
+  — the fixed per-change ceremony cost dominates on small changes and produces
+  documentation that outweighs the code; rejected in favor of proportional ceremony.
 
 ## Consequences
 

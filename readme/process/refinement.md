@@ -48,7 +48,10 @@ tinkering with the process on aesthetics.
 4. **Log it** in [../log/framework-changelog.md](../log/framework-changelog.md):
    date, doc, change, trigger. Same commit as the edit. The changelog is how the PO
    audits process drift asynchronously — an entry the PO dislikes gets reverted by a
-   follow-up refinement, not by rewriting history.
+   follow-up refinement, not by rewriting history. For changes that alter verification
+   requirements, routing defaults, or retention behavior, the entry also states the
+   expected before/after behavior in a phrase — that's what the sunset check
+   ([pruning](#pruning)) later judges the rule against.
 5. **Re-sync summaries.** If the edited fact is condensed anywhere (the *(summary)*
    sections of `AGENTS.md` — [management.md](../knowledge/management.md#doc-taxonomy)),
    update the summary in the same commit.
@@ -66,6 +69,16 @@ following are **⏳PO gated**, always:
 
 Everything else — loops, routing, standards, templates, budgets — is fair game for
 automatic refinement.
+
+## Thresholds are heuristics
+
+Every number in a PROCESS doc — line budgets, question caps, the ~2/3 context rule, WIP
+caps, maintenance cadences — is a **seed default**, not a measured fact. Each exists to
+control a signal (retrieval cost, PO fatigue, merge debt, doc drift, context rot); when
+observed behavior in *this* project says a value is wrong, tune it by refinement (logged
+like any rule change) and record the project-specific value in
+[derived.md](../standards/derived.md). Trust a direct signal over an elapsed threshold
+whenever both are available.
 
 ## Budget rule for AGENTS.md
 

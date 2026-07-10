@@ -66,11 +66,16 @@ Use when the PO provides documents, meeting transcripts, chat logs, or external 
    [retroactive exception](decisions/README.md)); **queue the implied work**: committed
    features become [backlog](../work/backlog.md) entries, with stub draft specs in
    `readme/work/specs/` where the material carries requirement detail too rich for a
-   backlog line. Only after everything actionable is captured, delete or archive the raw
-   material (`readme/log/archive/` accepts raw ingestion sources) — raw inputs left
-   around become a second, contradicting source of truth. Material pasted in
-   conversation has nothing to delete; material the PO committed to the repo is theirs —
-   propose the cleanup, don't just do it.
+   backlog line. Only after everything actionable is captured, clean up the raw
+   material — as a *retention decision*, not a reflex delete: **authoritative originals**
+   (PO-authored requirements, contracts/legal text, customer research, signed-off
+   decisions) are archived, never deleted, with a one-line provenance note (source,
+   owner, date) — the synthesis controls implementation, but the original is what lets a
+   challenged synthesis be audited. Disposable working copies are deleted.
+   `readme/log/archive/` accepts raw ingestion sources; raw inputs left in place become
+   a second, contradicting source of truth. Material pasted in conversation has nothing
+   to delete; material the PO committed to the repo is theirs — propose the cleanup,
+   don't just do it.
 
 ## Protocol B: PO interview
 

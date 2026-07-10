@@ -13,3 +13,8 @@
   has a UI; blameless incident-note form with a recurrence check if it operates
   production services — source: PO-directed review of an external framework (details
   were in tmp/CRITIQUE.md, uncommitted; this entry is self-contained)
+- Conditional imports from the 2026-07 critique adjudication (same trigger — once
+  onboarding fills `product.md`): data-migration rehearsal + rollback guidance if the
+  product has real stored data; observability/degraded-state guidance (queues, retries,
+  background jobs) if it operates services — source: root `CRITIQUE.md` §13, adopted as
+  risk-triggered additions, not universal ceremony

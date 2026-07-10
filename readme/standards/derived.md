@@ -41,7 +41,10 @@ Run at onboarding, and re-run any section when its anchors change.
 1. **Commands** — read manifests (`package.json`, `Makefile`, `pyproject.toml`, CI
    config…), then *execute* each candidate command to confirm it works before recording
    it in the Commands table of the repo-root `AGENTS.md` (its one home — always loaded). A documented
-   command that fails is worse than none.
+   command that fails is worse than none. Note the full suite's rough duration; if it is
+   slow enough to change per-task behavior, define a task-level subset row (affected
+   tests + fast static checks) — see the suite-breadth rule in
+   [quality-gates.md](quality-gates.md#definition-of-done), item 2.
 2. **Stack** — inventory direct dependencies and versions from lockfiles/manifests. For
    each major framework choice with no recorded rationale, add it here and note
    `[ASSUMPTION] inherited`.

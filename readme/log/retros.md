@@ -4,6 +4,20 @@
 
 # Retros
 
+# Retro: 2026-07-10 — critique adjudication session
+
+- **What happened:** PO placed an external critique at `CRITIQUE.md` and asked for a
+  judged, item-by-item disposition. 16 recommendations adjudicated: 9 adopted (2 as
+  sharpenings), 3 already present, 4 rejected with recorded reasons — full record in
+  `log/archive/critique-response-2026-07.md`, 10 changelog entries.
+- **Gap:** the two highest-value finds (dirty-tree ownership, commit-authority
+  assumption) were both *unsafe defaults invisible from inside* — no internal signal
+  would have fired before an incident. Same lesson as the last external review:
+  adversarial outside reads catch what incident-driven refinement structurally cannot.
+- **Change made:** the edits themselves; no additional process change — one instance of
+  a pattern already noted in the prior review's retro (watch for a repeat → consider a
+  standing external-review trigger).
+
 # Retro: 2026-07-10 — human-facing README session
 
 - **What happened:** PO requested a high-level root `README.md` explaining the framework
