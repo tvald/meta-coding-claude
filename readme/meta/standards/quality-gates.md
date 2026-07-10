@@ -1,7 +1,7 @@
 # Quality gates
 
 <!-- PROCESS doc: what "done" means, and where the PO must be in the loop.
-     Referenced by every loop in readme/process/loops.md. -->
+     Referenced by every loop in readme/meta/process/loops.md. -->
 
 ## Definition of done
 
@@ -45,7 +45,7 @@ Review effort scales with risk, chosen at routing time
 | **gated** | peer review + PO approval before merge/release | the mandatory-gate list below |
 
 A reviewer at any level checks: correctness against the spec, the definition-of-done
-list, standards compliance ([engineering.md](engineering.md), [derived.md](derived.md)),
+list, standards compliance ([engineering.md](engineering.md), [derived.md](../../standards/derived.md)),
 and — most importantly — *what's missing*: unhandled edge cases, absent tests, security
 holes. Review findings are fixed or explicitly waived with a reason; silence is not a
 waiver.
@@ -68,7 +68,7 @@ an ADR, and the summary in the repo-root `AGENTS.md` must be re-synced in the sa
    real data, publishing packages, deploying to production, sending communications,
    spending money, granting access.
 3. **Release** — whatever "release" means for this project (defined during onboarding,
-   recorded in [product.md](../knowledge/product.md) → *Delivery*).
+   recorded in [product.md](../../knowledge/product.md) → *Delivery*).
 4. **Security-sensitive changes** — anything altering the *behavior* of authentication
    or authorization, secrets/credential handling, payments, personal or regulated data
    handling, or the permissions granted to agents, CI/CD, or infrastructure: PO sign-off
@@ -83,7 +83,7 @@ proposed / the default recommendation / what happens on yes / what happens on no
 (d) moves on to other work if any is available. Gates block *the gated item*, never the
 whole system. A gated item untouched for two maintenance runs is re-presented once with
 refreshed context (things may have changed); if it blocks nothing, it moves to the
-[backlog](../work/backlog.md) with its `⏳PO` tag intact, so `state.md` stays the now.
+[backlog](../../work/backlog.md) with its `⏳PO` tag intact, so `state.md` stays the now.
 
 **What specific gates must present:** a gate-2 (irreversible action) or gate-3 (release)
 request also states the rollback/mitigation path and how success or failure will be

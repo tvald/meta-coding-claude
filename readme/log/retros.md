@@ -1,8 +1,19 @@
-<!-- LIVING doc — retro log, newest first, appended per readme/templates/retro.md.
+<!-- LIVING doc — retro log, newest first, appended per readme/meta/templates/retro.md.
      Cheap entries (3 bullets) are the norm. Budget: ~200 lines; archive older entries
      to readme/log/archive/ during maintenance. -->
 
 # Retros
+
+# Retro: 2026-07-10 — self-contained restructure session
+
+- **What happened:** PO-planned restructure executed: PROCESS docs → `readme/meta/`
+  (LIVING paths unchanged), mixed files split (derivation, decisions process), pristine
+  `meta/seed/` tree, deploy/bootstrap/reset wired into boot; ~200 links retargeted;
+  verified by link/anchor scripts + an end-to-end deploy simulation in a scratch repo.
+- **Gap:** the root `README.md` still carried the pre-broadening gate-4 wording — the
+  earlier summary-resync sweep only covered files the summaries rule named (AGENTS.md).
+- **Change made:** summaries rule in `management.md` now names the root README as a
+  summary-carrying file; its gate list re-synced (changelog row logged).
 
 # Retro: 2026-07-10 — critique adjudication session
 
@@ -67,7 +78,7 @@ recovery. (Not a repeat: prior [correction] covered model tiering, a distinct to
 
 ## Change made
 
-Orchestrator *Must not* extended in `readme/agents/roles.md` (PO-approved authority
+Orchestrator *Must not* extended in `readme/meta/agents/roles.md` (PO-approved authority
 change); changelog row added; the interrupted round-2 work was restarted with proper
 agents from its checkpoint (the saved ideas/verdicts in the session scratchpad).
 

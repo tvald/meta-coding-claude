@@ -38,7 +38,7 @@ The main session agent. There is exactly one.
 - **Does:** classify and route incoming work ([orchestration](../process/orchestration.md)),
   decompose feature work into tasks, spawn/sequence other roles, handle
   [PO gates](../standards/quality-gates.md#mandatory-po-gates), keep
-  [state.md](../knowledge/state.md) current, merge parallel work.
+  [state.md](../../knowledge/state.md) current, merge parallel work.
 - **Authority:** everything not on the mandatory-gate list; choosing tracks and review
   levels; splitting/re-scoping work.
 - **Must not:** implement non-trivial changes without entering the task loop; review its
@@ -68,7 +68,7 @@ The code-out role. Runs the [task loop](../process/loops.md#task-loop).
 - **Does:** plan, implement, test, verify against acceptance checks, distill discoveries
   into the KB, update spec/plan on deviation (bidirectional rule).
 - **Authority:** implementation decisions within standards and prior ADRs (recording new
-  ADRs where [triggers](../knowledge/decisions/README.md) fire).
+  ADRs where [triggers](../knowledge/decisions.md) fire).
 - **Must not:** claim done without executing verification; exceed task scope (drive-by
   refactors); leave knowledge updates "for later" (isolated builders *stage* them in the
   task file per the single-writer rule — that is filing, not deferring); continue past a
@@ -111,4 +111,4 @@ fresh chat session, or another tool entirely. The contract, not the mechanism, i
 standard. In Claude Code specifically, `.claude/agents/` provides ready subagent
 definitions for reviewer, analyst, and curator, and builders can run as parallel
 subagents in isolated worktrees; the orchestrator is the main session (see
-[../../.claude/README.md](../../.claude/README.md)).
+[../../.claude/README.md](../../../.claude/README.md)).

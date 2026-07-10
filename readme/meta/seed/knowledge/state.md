@@ -18,21 +18,6 @@
 <!-- Last few completed items, newest first. One line each. Prune aggressively —
      git history is the full record. -->
 
-- 2026-07-10: Restructured into self-contained add-on (PO-approved plan): framework core
-  → `readme/meta/` (+ seed tree, deploy/bootstrap/reset procedure); LIVING paths
-  unchanged; all links verified + bootstrap simulated end-to-end.
-- 2026-07-10: Adjudicated PO-placed `CRITIQUE.md` — 9 recommendations adopted (dirty-tree
-  ownership, commit-authority policy, gate-4 breadth, retention, suite scaling, +4 more),
-  4 rejected with reasons; disposition: `readme/log/archive/critique-response-2026-07.md`.
-  Source archived (PO-approved) as `readme/log/archive/critique-2026-07.md`.
-- 2026-07-10: Wrote repo-root `README.md` — human/PO-facing overview of the framework
-  (PO request; Quick track, self-reviewed).
-- 2026-07-10: PO-directed critique of an alternative meta-framework (written to
-  `tmp/CRITIQUE.md`, deliberately uncommitted); imported source-trust tiers +
-  decaying-facts rule (ingestion.md), untrusted-evidence rule (engineering.md §9), and
-  gate-presentation content (quality-gates.md) — see framework changelog; conditional
-  imports parked in backlog.
-
 ## Next steps
 
 <!-- The immediate queue only, priority order, ≤10 items: follow-ups, repair actions,

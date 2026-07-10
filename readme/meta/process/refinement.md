@@ -31,7 +31,7 @@ tinkering with the process on aesthetics.
    - how work is classified/split → [orchestration.md](orchestration.md)
    - how a loop runs → [loops.md](loops.md)
    - how code is written → [standards](../standards/engineering.md) (durable) or
-     [derived.md](../standards/derived.md) (this repo)
+     [derived.md](../../standards/derived.md) (this repo)
    - how knowledge is handled → [management.md](../knowledge/management.md) /
      [ingestion.md](../knowledge/ingestion.md)
    - role contracts → [roles.md](../agents/roles.md)
@@ -45,7 +45,7 @@ tinkering with the process on aesthetics.
 3. **Apply it.** Directly — no proposal queue. Write rules in the effective forms:
    prohibition + alternative ("don't X → do Y"), decision table, or one concrete
    example. Never vague admonitions ("be careful with X" changes nothing).
-4. **Log it** in [../log/framework-changelog.md](../log/framework-changelog.md):
+4. **Log it** in [../log/framework-changelog.md](../../log/framework-changelog.md):
    date, doc, change, trigger. Same commit as the edit. The changelog is how the PO
    audits process drift asynchronously — an entry the PO dislikes gets reverted by a
    follow-up refinement, not by rewriting history. For changes that alter verification
@@ -77,7 +77,7 @@ caps, maintenance cadences — is a **seed default**, not a measured fact. Each 
 control a signal (retrieval cost, PO fatigue, merge debt, doc drift, context rot); when
 observed behavior in *this* project says a value is wrong, tune it by refinement (logged
 like any rule change) and record the project-specific value in
-[derived.md](../standards/derived.md). Trust a direct signal over an elapsed threshold
+[derived.md](../../standards/derived.md). Trust a direct signal over an elapsed threshold
 whenever both are available.
 
 ## Budget rule for AGENTS.md

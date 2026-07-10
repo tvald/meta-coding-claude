@@ -66,7 +66,7 @@ what an approved spec *promises* the PO (scope, behavior, cost — when unsure, 
 does), additionally: flip the spec's `Status` to `needs-reapproval` noting inline which
 requirements changed, park a `⏳PO` re-approval item, pause work that depends on the
 changed promise, and continue work that doesn't. Record an ADR only if the deviation itself meets an
-[ADR trigger](../knowledge/decisions/README.md).
+[ADR trigger](../knowledge/decisions.md).
 
 ## Escalation
 
@@ -120,7 +120,7 @@ For the default solo-PO setup with no remote workflow: work happens on short-liv
 branches off the default branch; whoever orchestrates merges locally once the routed
 review level passes, then deletes the branch. Sequential Quick-track work may commit
 directly to the default branch. If the project adopts PRs/CI (a *Delivery* fact in
-[product.md](../knowledge/product.md)), the merge point moves there — the review-before-
+[product.md](../../knowledge/product.md)), the merge point moves there — the review-before-
 merge rule is what matters, not the mechanism. Pushing/publishing beyond the local repo
 follows gate 2.
 
@@ -141,13 +141,14 @@ when several are pending; one decision-ready message beats four interruptions.
 
 ## Onboarding
 
-The first run in a project — triggered when `product.md` is unfilled. (A small concrete
-PO request may be served first on the Quick/Standard track; Feature work waits for
-onboarding.)
+The first run in a project — triggered when `product.md` is missing or unfilled (a
+missing state tree bootstraps first: [procedure](../README.md#deploy-bootstrap-reset)).
+(A small concrete PO request may be served first on the Quick/Standard track; Feature
+work waits for onboarding.)
 
 1. **Inventory** — is there code? existing docs (README, wikis, old CLAUDE.md)? CI?
 2. **Existing repo:** survey the codebase (structure, stack, entry points, test state) →
-   run the [derivation procedure](../standards/derived.md#derivation-procedure)
+   run the [derivation procedure](../standards/derivation.md)
    (fills the Commands table in the repo-root `AGENTS.md`) → ingest existing docs via
    [Protocol A](../knowledge/ingestion.md#protocol-a-document-synthesis)
    (existing docs are *sources*, not truth — reconcile against code) → draft
@@ -168,7 +169,7 @@ onboarding.)
    is expensive to reverse, and this interview approval *is* its gate (gate 1: the stack
    ADRs form part of the bootstrap item's spec); record the ADRs.
 5. **Seed state** — populate `state.md` *Next steps* and `readme/work/backlog.md` with
-   whatever the interview surfaced; flip [ADR 0001](../knowledge/decisions/0001-adopt-agentic-framework.md)
+   whatever the interview surfaced; flip [ADR 0001](../../knowledge/decisions/0001-adopt-agentic-framework.md)
    from `proposed` to `accepted`, dated to this onboarding (the PO seeding the kit and
    confirming it in the interview is the adoption decision); commit everything.
 6. **Greenfield bootstrap** — scaffold the repo as a normal **Feature-track item**

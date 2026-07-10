@@ -4,12 +4,12 @@ description: Record an architecture/dependency/design decision as an ADR in the 
 argument-hint: [the decision, briefly]
 ---
 
-Record a decision per `readme/knowledge/decisions/README.md` — check its trigger list
+Record a decision per `readme/meta/knowledge/decisions.md` — check its trigger list
 first; if no trigger actually fires, say so and stop (over-recording is how logs die).
 
-1. Skim the index for prior/conflicting decisions. Superseding one? Follow the
-   supersession mechanics there.
-2. Write `NNNN-slug.md` from `readme/templates/adr.md`: Context, Decision (from
+1. Skim the index (`readme/knowledge/decisions/README.md`) for prior/conflicting
+   decisions. Superseding one? Follow the supersession mechanics.
+2. Write `NNNN-slug.md` from `readme/meta/templates/adr.md`: Context, Decision (from
    `$ARGUMENTS` and the current conversation), Alternatives (include "do nothing"),
    Consequences. Under a page. Mark `Decided by:` honestly — agent decisions within
    standing approval are normal and expected.

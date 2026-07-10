@@ -4,13 +4,13 @@ description: Run the Feature track for a piece of work — draft the spec, get t
 argument-hint: [the feature, briefly — or a backlog/spec reference]
 ---
 
-Run the **feature track** (`readme/process/orchestration.md#the-feature-track`) for
+Run the **feature track** (`readme/meta/process/orchestration.md#the-feature-track`) for
 `$ARGUMENTS` — read it now, then execute its five steps. Operating notes:
 
 - **Spec** — delegate drafting to the `analyst` subagent (target:
-  `readme/work/specs/<slug>.md`, from `readme/templates/spec.md`). Pass everything the
+  `readme/work/specs/<slug>.md`, from `readme/meta/templates/spec.md`). Pass everything the
   PO has said about this feature verbatim. If open questions remain that the KB can't
-  answer, interview the PO per `readme/knowledge/ingestion.md#protocol-b-po-interview`
+  answer, interview the PO per `readme/meta/knowledge/ingestion.md#protocol-b-po-interview`
   before gating — the gate wants zero open questions.
 - **Gate** — present the spec decision-ready (recommendation + notable alternatives).
   Record approval in the spec header. PO unavailable → park `⏳PO` in `state.md`,

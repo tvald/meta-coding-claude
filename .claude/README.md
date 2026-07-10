@@ -1,12 +1,12 @@
 # Claude Code adapter
 
 <!-- PROCESS docs: everything under .claude/ belongs to the framework and changes via
-     refinement (readme/process/refinement.md), logged in the framework changelog. -->
+     refinement (readme/meta/process/refinement.md), logged in the framework changelog. -->
 
 Native wiring for the process framework in `readme/`. The framework is portable —
 everything here is convenience, not requirement; the contracts live in
-[readme/agents/roles.md](../readme/agents/roles.md) and
-[readme/process/loops.md](../readme/process/loops.md).
+[readme/meta/agents/roles.md](../readme/meta/agents/roles.md) and
+[readme/meta/process/loops.md](../readme/meta/process/loops.md).
 
 ## What's here
 
@@ -69,7 +69,7 @@ yes):
 
 Replace the `<placeholders>` with real commands during onboarding (after the Commands
 table is verified). Further hooks should follow real incidents
-([refinement signals](../readme/process/refinement.md#signals)), not speculation.
+([refinement signals](../readme/meta/process/refinement.md#signals)), not speculation.
 
 ## Optional: scheduled autonomy
 

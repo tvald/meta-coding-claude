@@ -1,7 +1,7 @@
 # An agentic development framework
 
 <!-- PROCESS doc: the human-facing front door. Agents boot from AGENTS.md, not this file.
-     Changes via refinement (readme/process/refinement.md). -->
+     Changes via refinement (readme/meta/process/refinement.md). -->
 
 This repository contains a process framework for software projects that are **built by
 AI agents and directed by one human** — the *product owner* (PO). That's you. You
@@ -33,8 +33,11 @@ framework traces back to one of them:
 
 ## Getting started
 
-**Seed a project:** copy `AGENTS.md`, `CLAUDE.md`, `readme/`, and `.claude/` into your
-repository (new or existing), then start an agent session.
+**Seed a project:** copy `AGENTS.md` and `readme/meta/` into your repository (new or
+existing) — plus `.claude/` and a one-line `CLAUDE.md` (`@AGENTS.md`) if you use Claude
+Code — then start an agent session. The first session creates the mutable state files
+itself from `readme/meta/seed/`; deleting them later resets the framework for a new
+project ([procedure](readme/meta/README.md#deploy-bootstrap-reset)).
 
 **First run — onboarding.** The first session interviews you: what the project is, who
 it's for, what's in and out of scope, what "release" means for you. For an existing
@@ -96,8 +99,10 @@ anything not on it, they decide themselves:
    deleting real data, sending communications, spending money, granting access.
 3. **Release** — whatever "release" means for your project (you define this during
    onboarding).
-4. **Security-sensitive changes** — anything altering the behavior of auth, payments,
-   or PII handling gets your sign-off on the approach, regardless of size.
+4. **Security-sensitive changes** — anything altering the behavior of auth or
+   authorization, secrets handling, payments, personal or regulated data, or the
+   permissions of agents, CI, or infrastructure gets your sign-off on the approach,
+   regardless of size.
 
 Gates never stall the system. When work hits one, the agent prepares a decision-ready
 summary (≤10 lines: what's proposed, the recommendation, what happens on yes/no), parks
@@ -164,10 +169,10 @@ saying so.
 
 ## Going deeper
 
-[`readme/README.md`](readme/README.md) is the map of the whole framework, with a
-suggested reading order. The short version: [orchestration](readme/process/orchestration.md)
-explains how work is routed, [loops](readme/process/loops.md) defines the repeatable
-procedures, [quality-gates](readme/standards/quality-gates.md) defines "done" and your
-gates, and [management](readme/knowledge/management.md) governs the knowledge base.
+[`readme/meta/README.md`](readme/meta/README.md) is the map of the whole framework, with
+a suggested reading order. The short version: [orchestration](readme/meta/process/orchestration.md)
+explains how work is routed, [loops](readme/meta/process/loops.md) defines the repeatable
+procedures, [quality-gates](readme/meta/standards/quality-gates.md) defines "done" and your
+gates, and [management](readme/meta/knowledge/management.md) governs the knowledge base.
 Agents boot from [`AGENTS.md`](AGENTS.md), which is deliberately a map, not the
 territory.

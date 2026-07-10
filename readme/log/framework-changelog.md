@@ -1,5 +1,5 @@
 <!-- LIVING doc — the audit trail of framework self-modification.
-     Appended by the refinement procedure (readme/process/refinement.md), newest first.
+     Appended by the refinement procedure (readme/meta/process/refinement.md), newest first.
      Budget: ~100 entries; archive older to readme/log/archive/.
      The PO reviews this asynchronously — entries must make the change and its reason
      legible in one line each. -->
@@ -8,6 +8,11 @@
 
 | Date | Doc | Change | Trigger |
 |------|-----|--------|---------|
+| 2026-07-10 | readme/* (restructure) | All PROCESS docs moved under `readme/meta/` (process, knowledge rules, standards, roles, work conventions, templates); LIVING files stay at `readme/{knowledge,standards/derived.md,work,log}`; ~200 cross-references retargeted. Before: framework and state interleaved; after: meta/ = immutable core, rest = deletable state | PO directive: self-contained add-on structure |
+| 2026-07-10 | meta/standards/derivation.md, meta/knowledge/decisions.md (new) | Mixed-kind files split: derivation procedure extracted from derived.md; ADR triggers/mechanics/who-decides extracted from decisions/README.md (now index-only). Each fact has one owner across the meta/state boundary | Same directive — state files must be deletable without losing process rules |
+| 2026-07-10 | meta/seed/ (new), meta/knowledge/management.md | Pristine state tree under meta/seed/; taxonomy now layout-enforced (meta/=PROCESS+TEMPLATE, rest of readme/=LIVING); seed-sync rule: refinements to seeded structure update the seed copy same-commit | Same directive — bootstrap needs a mechanical copy source |
+| 2026-07-10 | meta/README.md, AGENTS.md, loops.md, orchestration.md, skills | Deploy/bootstrap/reset procedure: deploy = copy AGENTS.md + readme/meta/; boot bootstraps missing state from seed automatically; reset (delete state dirs) documented and PO-gated. Before: seeding = copy the whole repo with pre-existing state; after: state self-bootstraps on first run | Same directive |
+| 2026-07-10 | README.md, meta/knowledge/management.md | Root README gate-4 summary re-synced (was missed in the gate-broadening sweep); summaries rule now names root README as a summary-carrying file to check | Found during restructure verification — stale unmarked summary |
 | 2026-07-10 | AGENTS.md, loops.md | Dirty worktree treated as unknown ownership: inspect, resume only traceable agent work, preserve and work around the rest, ask only on overlap. Before: dirty tree = resume it; after: dirty tree = investigate first | PO-placed critique (CRITIQUE.md P0.2) — adjudication in log/archive/critique-response-2026-07.md |
 | 2026-07-10 | orchestration.md, loops.md, AGENTS.md | Git authority is an onboarding-discovered Delivery policy; commit remains default; defined no-commit degradation (clean diff + staged notes; "same commit" → "same coherent change") | Critique P0.1 (same adjudication) |
 | 2026-07-10 | quality-gates.md, orchestration.md, AGENTS.md, engineering.md | Gate 4 broadened: + authorization, secrets/credentials, regulated data, agent/CI/infra permissions; routing signals + summaries re-synced; install-hook dependencies get code-level scrutiny | Critique P0.4 — gate-list growth PO-covered by the directed adjudication |

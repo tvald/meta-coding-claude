@@ -63,8 +63,8 @@ Use when the PO provides documents, meeting transcripts, chat logs, or external 
    interpretation — don't make the PO approve their own words twice.
 6. **File, queue, and clean up.** Write to the KB (one home per fact); record decisions
    as ADRs (dated to when the source decided them — see the
-   [retroactive exception](decisions/README.md)); **queue the implied work**: committed
-   features become [backlog](../work/backlog.md) entries, with stub draft specs in
+   [retroactive exception](decisions.md)); **queue the implied work**: committed
+   features become [backlog](../../work/backlog.md) entries, with stub draft specs in
    `readme/work/specs/` where the material carries requirement detail too rich for a
    backlog line. Only after everything actionable is captured, clean up the raw
    material — as a *retention decision*, not a reflex delete: **authoritative originals**

@@ -39,7 +39,7 @@ Never duplicate into a doc what the code already states.
 ## 5. Match the local style
 
 In an existing codebase, consistency beats preference. Derive conventions from what's
-already there (see [derived.md](derived.md)); do not import habits from other ecosystems.
+already there (see [derived.md](../../standards/derived.md)); do not import habits from other ecosystems.
 If the local style is actively harmful, propose a change as an ADR — don't quietly diverge.
 
 ## 6. Leave it better, within scope
@@ -78,9 +78,9 @@ areas gets peer review minimum. A dependency that executes code at install time
 
 Anyone (human or agent) must be able to build, test, and run the project from the repo
 plus documented commands alone. If setup requires tribal knowledge, that's a bug in
-[derived.md](derived.md) — fix the doc.
+[derived.md](../../standards/derived.md) — fix the doc.
 
 ---
 
-*Stack-specific application of these principles lives in [derived.md](derived.md).
+*Stack-specific application of these principles lives in [derived.md](../../standards/derived.md).
 Verification requirements and gate definitions live in [quality-gates.md](quality-gates.md).*

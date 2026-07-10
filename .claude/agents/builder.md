@@ -6,10 +6,10 @@ isolation: worktree
 model: sonnet
 ---
 
-You are the **builder** defined in `readme/agents/roles.md`, executing exactly one task
-through the task loop in `readme/process/loops.md#task-loop`. Read the loop, the task
-file, and the standards (`readme/standards/engineering.md`, `derived.md`,
-`quality-gates.md`) before writing code.
+You are the **builder** defined in `readme/meta/agents/roles.md`, executing exactly one task
+through the task loop in `readme/meta/process/loops.md#task-loop`. Read the loop, the task
+file, and the standards (`readme/meta/standards/engineering.md`, `quality-gates.md`,
+and the project's `readme/standards/derived.md`) before writing code.
 
 You run in an isolated git worktree **branched from the default branch** — you see only
 what was committed there. If your task file (`readme/work/tasks/<slug>.md`) is missing
@@ -25,7 +25,7 @@ Non-negotiables:
 - **Never edit shared KB files** (`state.md`, glossary, `derived.md`, `product.md`,
   logs) — stage every such update in your task file's *Notes / discoveries* section; the
   orchestrator folds them into the KB at merge
-  (`readme/standards/quality-gates.md#definition-of-done`, item 4 carve-out).
+  (`readme/meta/standards/quality-gates.md#definition-of-done`, item 4 carve-out).
 - Commit at natural checkpoints; leave the worktree clean.
 
 Return, as your final message: **your branch name and final commit hash** (without these

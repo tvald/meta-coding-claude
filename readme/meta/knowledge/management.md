@@ -2,31 +2,38 @@
 
 <!-- PROCESS doc: how the knowledge base works. Read this before writing to any knowledge file. -->
 
-The knowledge base (KB) is everything under `readme/knowledge/` plus the standards in
-`readme/standards/`. It exists so that any agent, in any session, can act with the
-product owner's context without asking for it again.
+The knowledge base (KB) is everything under `readme/knowledge/` plus
+`readme/standards/derived.md`. It exists so that any agent, in any session, can act with
+the product owner's context without asking for it again.
 
 ## Doc taxonomy
 
-Every markdown file in this framework is one of three kinds:
+Every markdown file in this framework is one of three kinds, and the directory layout
+enforces the split: **`readme/meta/` is framework-owned; everything else under
+`readme/` is project-owned** and can be deleted to reset
+([procedure](../README.md#deploy-bootstrap-reset)).
 
-| Kind | Owned by | Changes when | Examples |
-|------|----------|--------------|----------|
-| **PROCESS** | the framework | the process itself is improved (via [refinement](../process/refinement.md)) | this file, `orchestration.md`, everything under `.claude/` |
-| **LIVING** | the project | the product/code/decisions change | `product.md`, `state.md`, `standards/derived.md`, decision log, work artifacts |
-| **TEMPLATE** | the framework | via refinement, like PROCESS | everything under `templates/` |
+| Kind | Owned by | Lives in | Changes when |
+|------|----------|----------|--------------|
+| **PROCESS** | the framework | `readme/meta/` (plus root `AGENTS.md`, `CLAUDE.md`, `README.md`, and `.claude/`) | the process itself is improved (via [refinement](../process/refinement.md)) |
+| **LIVING** | the project | `readme/` outside `meta/`: `knowledge/`, `standards/derived.md`, `work/`, `log/` | the product/code/decisions change |
+| **TEMPLATE** | the framework | `meta/templates/` (copy-per-use) and `meta/seed/` (copy-once state tree) | via refinement, like PROCESS |
 
 Each file declares its kind in an HTML comment at the top (`AGENTS.md` and `CLAUDE.md`
 are PROCESS; their declaration lives in this sentence because memory injection strips
 their comments). A PROCESS doc may embed a clearly marked **living section** — the
-Commands table in `AGENTS.md`, the index table in `decisions/README.md`, the fill-in
-sections of `derived.md` — which follows LIVING rules: routine updates to it are project
-work, not refinement. PROCESS docs change rarely and deliberately; LIVING docs change
-constantly and cheaply.
+Commands table in `AGENTS.md` — which follows LIVING rules: routine updates to it are
+project work, not refinement. PROCESS docs change rarely and deliberately; LIVING docs
+change constantly and cheaply.
 
-**Summaries:** `AGENTS.md` may condense a canonical rule for always-loaded convenience,
-marked *(summary)* with a link. The canonical doc wins on conflict, and any edit to a
-canonical fact updates its summaries in the same commit (grep for the anchor).
+**Seed sync:** a refinement that changes a LIVING file's seeded structure or header
+guidance updates the matching `meta/seed/` copy in the same commit — the seed is the
+template, the project file is its instance.
+
+**Summaries:** `AGENTS.md` (for always-loaded convenience) and the root `README.md`
+(for the PO) may condense a canonical rule, marked *(summary)* with a link where the
+format allows. The canonical doc wins on conflict, and any edit to a canonical fact
+updates its summaries in the same commit (grep for the anchor — and check both files).
 
 ## The knowledge files
 
@@ -34,20 +41,20 @@ This table is the canonical budget list for all living docs.
 
 | File | Holds | Budget |
 |------|-------|--------|
-| [product.md](product.md) | Why the project exists: vision, users, scope, constraints, delivery | ~200 lines |
-| [state.md](state.md) | The now: current focus, recent changes, next steps, known-failed approaches | **60 lines hard cap**; *Next steps* ≤10 items |
-| [glossary.md](glossary.md) | Domain terms with precise meanings | 1–2 lines per term |
-| [decisions/](decisions/README.md) | Immutable decision history (ADRs) | one page per decision |
-| [../standards/derived.md](../standards/derived.md) | Stack- and repo-specific conventions | ~150 lines |
-| [../work/backlog.md](../work/backlog.md) | Known-but-not-now work, priority-ordered | ~150 lines |
-| [../work/](../work/README.md) specs & tasks | In-flight work artifacts | per their templates; archived per [work/README](../work/README.md) |
-| [../log/retros.md](../log/retros.md) | Retro entries | ~200 lines |
-| [../log/framework-changelog.md](../log/framework-changelog.md) | Framework self-modification audit | ~100 entries |
+| [product.md](../../knowledge/product.md) | Why the project exists: vision, users, scope, constraints, delivery | ~200 lines |
+| [state.md](../../knowledge/state.md) | The now: current focus, recent changes, next steps, known-failed approaches | **60 lines hard cap**; *Next steps* ≤10 items |
+| [glossary.md](../../knowledge/glossary.md) | Domain terms with precise meanings | 1–2 lines per term |
+| [decisions/](../../knowledge/decisions/README.md) | Immutable decision history (ADRs) | one page per decision |
+| [standards/derived.md](../../standards/derived.md) | Stack- and repo-specific conventions | ~150 lines |
+| [work/backlog.md](../../work/backlog.md) | Known-but-not-now work, priority-ordered | ~150 lines |
+| [work/](../work/README.md) specs & tasks | In-flight work artifacts | per their templates; archived per [work conventions](../work/README.md) |
+| [log/retros.md](../../log/retros.md) | Retro entries | ~200 lines |
+| [log/framework-changelog.md](../../log/framework-changelog.md) | Framework self-modification audit | ~100 entries |
 
 Budgets are enforced by **archival, not deletion**: when a living doc exceeds its budget,
 move the oldest/least-relevant content to `readme/log/archive/` (named
 `sourcefile-YYYY-MM.md`) and leave a one-line pointer. Two exceptions: `state.md`
-*Next steps* overflow goes to the [backlog](../work/backlog.md), never the archive
+*Next steps* overflow goes to the [backlog](../../work/backlog.md), never the archive
 (archived work is lost work); *Known dead ends* whose reasons still hold graduate to
 `derived.md` *Gotchas*. Never let a budget stop you from recording something — record
 first, archive to make room.
@@ -67,7 +74,7 @@ first, archive to make room.
    a doc contradicting the code, the code is the truth about *what is*; docs are the truth
    about *what is intended* and *why*. Reconcile immediately: fix the doc, or if the code
    drifted from an approved intention, flag it as a defect in `state.md`.
-4. **Record decisions when they happen.** See [decisions/README.md](decisions/README.md)
+4. **Record decisions when they happen.** See [the decisions process](decisions.md)
    for triggers. A decision recorded a week later is fiction.
 5. **Don't restate the code.** No file-by-file codebase tours, no API references, no
    architecture diagrams that a reader could get by reading the code. The KB records what

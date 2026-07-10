@@ -1,7 +1,7 @@
 # Task: <short imperative title>
 
 <!-- TEMPLATE — a task is the unit of the build loop: one branch, one reviewable change.
-     Copy to readme/work/tasks/<slug>.md (conventions: readme/work/README.md).
+     Copy to readme/work/tasks/<slug>.md (conventions: readme/meta/work/README.md).
      Quick-track tasks live only in the orchestrator's working memory; write a task FILE
      when work spans sessions, is handed to another agent (always, for spawned builders),
      or gets peer/gated review — the file is where the review record lives. -->

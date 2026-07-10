@@ -1,7 +1,7 @@
 # Interview worksheet: <topic>
 
 <!-- TEMPLATE — copy to readme/work/interviews/<slug>.md when knowledge must come from
-     the PO's head (protocol: readme/knowledge/ingestion.md). This worksheet is scratch;
+     the PO's head (protocol: readme/meta/knowledge/ingestion.md). This worksheet is scratch;
      synthesized answers land in the knowledge base and the worksheet is deleted. -->
 
 - **Goal of this interview:** <!-- the decision or doc this must unblock -->

@@ -7,7 +7,7 @@
      the result was wrong, a loop badly overran, or a review found a class of problem.
      PO corrections are tagged [correction] in the trigger line — always grep retros.md
      (and its archive) for a prior entry on the same topic first; a repeat = mandatory
-     rule change (readme/process/refinement.md). -->
+     rule change (readme/meta/process/refinement.md). -->
 
 - **Trigger:** end-of-session | end-of-task | failure | [correction] PO feedback
 - **Scope:** <task/spec/period covered>

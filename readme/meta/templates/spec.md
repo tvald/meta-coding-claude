@@ -1,7 +1,7 @@
 # Spec: <feature name>
 
 <!-- TEMPLATE — copy to readme/work/specs/<slug>.md for each Feature-track item
-     (conventions: readme/work/README.md). Delete guidance comments when filling in.
+     (conventions: readme/meta/work/README.md). Delete guidance comments when filling in.
      A spec answers WHAT and WHY. It never contains HOW (that's the plan) or code.
      Right-size it: a spec should be as short as the feature allows — and shorter than
      the diff it produces. One paragraph is a valid spec. -->
@@ -14,13 +14,13 @@
 - **Related:** <!-- links to decisions (ADR numbers), prior specs, external docs -->
 
 <!-- LIVING doc — freshness block: KEEP this comment when filling in the spec
-     (readme/knowledge/management.md#freshness-metadata):
+     (readme/meta/knowledge/management.md#freshness-metadata):
      last-verified: YYYY-MM-DD
      anchors: (code paths whose change likely invalidates this spec; fill once known) -->
 
 ## Problem
 
-<!-- What user/business problem does this solve? 1–3 sentences. If you can't state it, stop and run the interview protocol (readme/knowledge/ingestion.md). -->
+<!-- What user/business problem does this solve? 1–3 sentences. If you can't state it, stop and run the interview protocol (readme/meta/knowledge/ingestion.md). -->
 
 ## Outcome
 
@@ -44,7 +44,7 @@
 <!-- How we will know each requirement is met. Concrete: commands to run, behavior to observe.
      The verifier executes these; write them so a stranger could. Before Status flips to
      implemented, each MUST maps to a named permanent test or a recorded exemption
-     (readme/process/orchestration.md#the-feature-track). -->
+     (readme/meta/process/orchestration.md#the-feature-track). -->
 
 - [ ] ...
 

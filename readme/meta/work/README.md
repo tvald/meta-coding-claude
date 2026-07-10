@@ -9,7 +9,7 @@ They live here, beside the knowledge base, and follow LIVING-doc rules
 
 | Artifact | Location | Template |
 |----------|----------|----------|
-| Backlog | [backlog.md](backlog.md) | none — format defined in the file |
+| Backlog | [backlog.md](../../work/backlog.md) | none — format defined in the file |
 | Specs | `specs/<slug>.md` | [templates/spec.md](../templates/spec.md) |
 | Tasks | `tasks/<slug>.md` | [templates/task.md](../templates/task.md) |
 | Interview worksheets | `interviews/<slug>.md` (scratch — deleted after filing) | [templates/interview.md](../templates/interview.md) |

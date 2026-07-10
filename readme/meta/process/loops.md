@@ -36,7 +36,9 @@ Cross-cutting rules for every loop:
 The outermost loop — wraps everything a working session does.
 
 - **Trigger:** a session starts.
-- **Boot:** read [state.md](../knowledge/state.md) (the now). If it disagrees with
+- **Boot:** read [state.md](../../knowledge/state.md) (the now). If it doesn't exist,
+  this is a fresh deploy — bootstrap the state tree from `readme/meta/seed/` first
+  ([procedure](../README.md#deploy-bootstrap-reset)). If it disagrees with
   recent `git log` — commits it doesn't reflect — the previous session crashed before
   closing: reconcile *Recently done* / *Current focus* from git first. A dirty working
   tree or a stray task branch is **evidence to investigate, not proof of ownership**:
@@ -48,7 +50,7 @@ The outermost loop — wraps everything a working session does.
   route the session's goal via the [orchestration table](orchestration.md#routing). If
   the PO gave
   no goal, take the top unblocked item of *Next steps* in `state.md`, then the top of
-  the [backlog](../work/backlog.md); if both are empty, run the
+  the [backlog](../../work/backlog.md); if both are empty, run the
   [Maintenance loop](#maintenance-loop). If the PO returns after a long gap, open with a
   ≤10-line catch-up digest — shipped / in-flight / parked `⏳PO` / notable process
   changes — built from `state.md` and the changelog; never make the PO reconstruct it
@@ -73,9 +75,9 @@ The inner build loop — one task to one verified change. Run by a [builder](../
   ([template](../templates/task.md) if it spans sessions or agents).
 - **Steps:**
   1. **Orient** — read the task, its spec (if any), `state.md` *Known dead ends*, the
-     relevant [standards](../standards/derived.md), and the
-     [glossary](../knowledge/glossary.md) for any domain terms involved. Skim the
-     [decision index](../knowledge/decisions/README.md) if touching architecture.
+     relevant [standards](../../standards/derived.md), and the
+     [glossary](../../knowledge/glossary.md) for any domain terms involved. Skim the
+     [decision index](../../knowledge/decisions/README.md) if touching architecture.
   2. **Plan** — decide approach and files to touch; write it into the task. Size-check:
      if it's an L, stop and split ([orchestration](orchestration.md#escalation)).
      ADR triggers fire *now*, before code.
@@ -112,7 +114,7 @@ Knowledge-in. Run by an [analyst](../agents/roles.md#analyst).
 - **Steps:** run the matching [protocol](../knowledge/ingestion.md) (A: documents,
   B: interview, C is embedded in the task loop) → file → confirm per protocol.
 - **Exit:** KB updated; **implied work queued** — features the material commits to
-  become [backlog](../work/backlog.md) entries (or stub specs when detail is rich);
+  become [backlog](../../work/backlog.md) entries (or stub specs when detail is rich);
   raw inputs deleted/archived; conflicts resolved or explicitly queued with `⏳PO`.
   Ingested material that produces no queued work and no KB change was noise — say so.
 - **Failure handling:** PO unavailable → adopt defaults with `[ASSUMPTION]`, never block
@@ -159,7 +161,7 @@ fresh context — in Claude Code, always a separate subagent.
 Upkeep. Run by a [curator](../agents/roles.md#curator).
 
 - **Trigger:** idle capacity; anything smells stale; or the dated entries in
-  [retros.md](../log/retros.md) show the last maintenance run is ≥2 weeks or ≥~10 task
+  [retros.md](../../log/retros.md) show the last maintenance run is ≥2 weeks or ≥~10 task
   closes ago (every maintenance run leaves a dated retro entry, so the log itself is
   the schedule).
 - **Steps:**
@@ -196,7 +198,7 @@ Learning. Usually a hat worn at another loop's exit, not a separate agent.
 - **Trigger (cheap form):** at minimum once per session at close, and at any loop exit
   where the retro question finds something — three short fields on the
   [template](../templates/retro.md): what happened / gap / change made, dated. Under two
-  minutes; inserted at the top of [../log/retros.md](../log/retros.md). "Gap: none" is a
+  minutes; inserted at the top of [../log/retros.md](../../log/retros.md). "Gap: none" is a
   fine outcome. **Every PO correction gets an entry tagged `[correction]`** — and before
   treating any correction as first-time, grep `retros.md` (and its archive) for a prior
   entry on the same topic: a repeat makes a rule change mandatory
