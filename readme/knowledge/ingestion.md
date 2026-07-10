@@ -72,6 +72,12 @@ questions blocking a spec, or accumulated `[ASSUMPTION]` markers. Worksheet:
 - **Walk scenarios; probe the negative space.** A concrete walk-through ("a user does
   X — what should happen?") surfaces more than abstract questions, and *"what must NOT
   change?"* surfaces the constraints nobody volunteers.
+- **Pressure-test before the gate (optional, stakes-scaled).** Before presenting a spec
+  or a consequential recommendation, run it through one or two critique lenses: *pre-mortem*
+  (assume it shipped and failed — why?), *inversion* (what would guarantee the opposite of
+  the goal?), *red-team* (attack it adversarially), *first-principles* (drop the inherited
+  assumptions and rederive). Gaps found become spec revisions or `[ASSUMPTION]`-marked open
+  questions — not extra PO questions. Skip for low-stakes work.
 - **"I don't know" is an answer.** File it as an open question with your default adopted
   as `[ASSUMPTION]`, and move on.
 - **Implementation starts from the written artifact, not the conversation.** Synthesize

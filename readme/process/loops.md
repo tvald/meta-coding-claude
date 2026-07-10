@@ -131,7 +131,9 @@ fresh context — in Claude Code, always a separate subagent.
      cannot execute (manual/UI steps) are judged from the builder's recorded evidence
      and marked *accepted on evidence*, never silently counted as verified.
   4. Hunt for absences: unhandled edge cases, missing tests, security exposure
-     (injection, secrets, authz), scope creep.
+     (injection, secrets, authz), scope creep. A zero-finding pass on a non-trivial diff
+     is a prompt to re-examine its riskiest part once more before approving — a clean
+     result is earned, not assumed (never manufacture findings to fill the space).
   5. Return findings: each is *blocking* or *advisory*, with file:line and a concrete
      fix direction.
 - **Exit:** approve; or findings go back to a builder, and re-review covers the deltas
