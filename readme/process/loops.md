@@ -157,7 +157,9 @@ Upkeep. Run by a [curator](../agents/roles.md#curator).
      refinement-added rules, contradiction resolution, compression.
   5. Repo hygiene sweep within standards: broken links in docs, dead references, and
      quarantined flaky checks still lacking a queued task
-     ([quality gates](../standards/quality-gates.md#verification-discipline)).
+     ([quality gates](../standards/quality-gates.md#verification-discipline)); and ⏳PO
+     items untouched for two maintenance runs — re-presented once, then parked to the
+     backlog per [gate mechanics](../standards/quality-gates.md#mandatory-po-gates).
 - **Exit:** trivial repairs applied immediately (each its own small commit); the rest
   queued in `state.md` *Next steps*; `last-verified` updated on all checked docs.
 - **Failure handling:** systemic findings (the same class of rot recurring) are a
