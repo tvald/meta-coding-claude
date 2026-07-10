@@ -7,7 +7,7 @@ A markdown-only process framework for projects built by AI agents under a solo p
 owner. It exists to solve the three failure modes of agentic development: **lost context**
 (every session starts ignorant), **silent re-decisions** (choices get remade differently),
 and **unverified velocity** (fast wrong code). It is portable — any agent that can read
-files can follow it — with a native [Claude Code adapter](../../.claude/README.md).
+files can follow it — with native harness [adapters](#adapters).
 
 ## Design principles
 
@@ -74,6 +74,41 @@ readme/
 Everything under `meta/` is PROCESS (or a TEMPLATE); everything else under `readme/` is
 LIVING. Full taxonomy (including living sections inside PROCESS docs and AGENTS.md
 summaries): [management.md](knowledge/management.md#doc-taxonomy).
+
+## Adapters
+
+A harness adapter is native wiring — subagents, skills, prompts, declarative config —
+that binds one agent runtime to the framework's contracts. Current instances:
+[`.claude/`](../../.claude/README.md) (Claude Code). Every adapter, present or future,
+is bound by this contract:
+
+1. **Adapters never own process semantics.** Loops, gates, role contracts, and
+   definitions of done live in `readme/meta/`. Adapter files may condense them for
+   inline use (spawned agents don't inherit context), but every restatement is a
+   summary in the [management.md](knowledge/management.md#doc-taxonomy) sense: the
+   canonical doc wins on conflict and the summary is re-synced in the same commit.
+   What adapters *do* own: harness bindings — tool lists, model choices, isolation
+   modes, invocation shapes.
+2. **Markdown and declarative config only, as shipped.** No executable code, no
+   dependencies. Anything executable (hooks, scripts) is opt-in, installed only on
+   explicit PO approval (typically at onboarding), and never a precondition for the
+   framework to function.
+3. **No permission expansion.** Adapter tool grants may only restrict, never widen,
+   what the harness gives the main session; hooks that deny are fine. Widening an
+   agent's permissions is a gate-4 change and routes Feature track (`AGENTS.md`).
+4. **Optional binding of mandatory contracts.** The framework must run without any
+   adapter — another harness satisfies the same contracts differently
+   ([runtime mapping](agents/roles.md#runtime-mapping)). Within its harness, an
+   adapter's binding of a mandatory contract is the required way to satisfy it (e.g.
+   the reviewer subagent for fresh-context review in Claude Code): "optional" is about
+   portability, never a license to skip the contract.
+5. **Removable without loss.** Deleting an adapter directory must leave `AGENTS.md` +
+   `readme/` complete and self-consistent — core docs may point to adapters as
+   conveniences, never as the only home of a rule. This is the audit test for 1 and 4;
+   the [maintenance loop](process/loops.md#maintenance-loop) checks it.
+
+Adapter files are PROCESS docs: they change via [refinement](process/refinement.md) and
+are logged in the framework changelog.
 
 ## Deploy, bootstrap, reset
 

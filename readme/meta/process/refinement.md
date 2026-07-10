@@ -35,8 +35,10 @@ tinkering with the process on aesthetics.
    - how knowledge is handled → [management.md](../knowledge/management.md) /
      [ingestion.md](../knowledge/ingestion.md)
    - role contracts → [roles.md](../agents/roles.md)
-   - Claude Code wiring (subagents, skills) → `.claude/` (PROCESS files; refinements
-     there are logged like any other)
+   - harness wiring (subagents, skills, prompts) → that adapter's directory, e.g.
+     `.claude/` — PROCESS files bound by the
+     [adapter contract](../README.md#adapters); refinements there are logged like any
+     other
    - always-loaded rules → `AGENTS.md` (last resort — see budget rule)
 2. **Design the smallest edit that would have prevented the triggering incident.**
    Prefer, in order: *sharpening an existing line* → *replacing a line* → *adding a

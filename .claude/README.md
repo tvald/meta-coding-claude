@@ -3,10 +3,17 @@
 <!-- PROCESS docs: everything under .claude/ belongs to the framework and changes via
      refinement (readme/meta/process/refinement.md), logged in the framework changelog. -->
 
-Native wiring for the process framework in `readme/`. The framework is portable —
-everything here is convenience, not requirement; the contracts live in
-[readme/meta/agents/roles.md](../readme/meta/agents/roles.md) and
-[readme/meta/process/loops.md](../readme/meta/process/loops.md).
+Native wiring for the process framework in `readme/`, bound by the
+[adapter contract](../readme/meta/README.md#adapters): this directory owns only harness
+bindings (tool lists, models, isolation, invocation); the process semantics it restates
+are summaries of [readme/meta/agents/roles.md](../readme/meta/agents/roles.md) and
+[readme/meta/process/loops.md](../readme/meta/process/loops.md) — on conflict the
+canonical doc wins, and edits re-sync here in the same commit.
+
+The framework runs without this directory (delete it and `readme/` + `AGENTS.md` remain
+complete) — but while working *in Claude Code*, its bindings of mandatory contracts are
+the required way to satisfy them: peer review goes through the `reviewer` subagent,
+always.
 
 ## What's here
 
@@ -35,10 +42,12 @@ gate decisions compound.
 
 ## Optional: deterministic enforcement (hooks)
 
-Markdown instructions are advisory; hooks in `.claude/settings.json` are guaranteed. The
-seed kit is markdown-only, so hooks aren't preinstalled — the onboarding interview asks
-the PO whether to install this recommended baseline (any agent can write the file on a
-yes):
+Markdown instructions are advisory; hooks in `.claude/settings.json` are guaranteed.
+Hooks are the adapter contract's executable carve-out: the shipped kit is markdown-only,
+and anything executable is opt-in on explicit PO approval — the onboarding interview
+asks the PO whether to install this recommended baseline (any agent can write the file
+on a yes). Hooks may only tighten enforcement (deny/verify), never grant what the
+session couldn't already do:
 
 ```json
 {

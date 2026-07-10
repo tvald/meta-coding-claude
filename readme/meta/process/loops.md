@@ -186,6 +186,11 @@ Upkeep. Run by a [curator](../agents/roles.md#curator).
      ([quality gates](../standards/quality-gates.md#verification-discipline)); and ⏳PO
      items untouched for two maintenance runs — re-presented once, then parked to the
      backlog per [gate mechanics](../standards/quality-gates.md#mandatory-po-gates).
+  6. Adapter-contract audit per [meta/README.md](../README.md#adapters): no rule lives
+     only in an adapter directory (semantics have a canonical home in `readme/meta/`,
+     summaries in sync); no adapter grants permissions beyond the main session or ships
+     executable code that wasn't PO-approved; deleting every adapter directory would
+     leave `AGENTS.md` + `readme/` self-consistent.
 - **Exit:** trivial repairs applied immediately (each its own small commit); the rest
   queued in `state.md` *Next steps*; `last-verified` updated on all checked docs.
 - **Failure handling:** systemic findings (the same class of rot recurring) are a

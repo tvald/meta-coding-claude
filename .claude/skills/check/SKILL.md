@@ -20,6 +20,10 @@ and execute every step, scoped by `$ARGUMENTS` if given:
    `readme/meta/process/refinement.md` for each.
 4. Framework pruning per `readme/meta/process/refinement.md#pruning`.
 5. Doc hygiene: broken links, dead references, retired specs/tasks to archive.
+6. Adapter-contract audit per `readme/meta/README.md#adapters`: no rule owned only by
+   an adapter directory (summaries in sync with their canonical docs), no permission
+   expansion or unapproved executable code, and the core would survive deleting every
+   adapter directory.
 
 Apply trivial repairs immediately (one small commit each); queue the rest in `state.md`
 *Next steps*; update `last-verified` on every doc actually verified. Close by adding a
