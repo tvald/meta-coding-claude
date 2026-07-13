@@ -4,6 +4,19 @@
 
 # Retros
 
+# Retro: 2026-07-13 — usage-limit guard session
+
+- **What happened:** PO-directed usage-limit management shipped end-to-end on a task
+  branch with full dogfooding: task file, core rule (orchestration §Usage limits +
+  orchestrator contract), active Claude binding (guard script, hook, config), all modes
+  verified by execution, fresh-context peer review (approve, 5 advisories → 3 fixed,
+  1 waived-documented, 1 partially addressed), merged after review.
+- **Gap:** the reviewer's advisory A is the honest one to watch: pre-emptive 95%
+  protection is dormant until real limits are observed and recorded — the design accepts
+  one limit-hit to calibrate. If a second limit-hit ever occurs *after* calibration,
+  that's a refinement signal (estimates drifting), not noise.
+- **Change made:** the feature itself; latch output now forces the calibration step.
+
 # Retro: 2026-07-13 — resume + external-review refinement
 
 - **What happened:** Session resumed after a gap; state.md was clean (all prior sessions

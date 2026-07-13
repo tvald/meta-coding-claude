@@ -38,11 +38,14 @@ The main session agent. There is exactly one.
 - **Does:** classify and route incoming work ([orchestration](../process/orchestration.md)),
   decompose feature work into tasks, spawn/sequence other roles, handle
   [PO gates](../standards/quality-gates.md#mandatory-po-gates), keep
-  [state.md](../../knowledge/state.md) current, merge parallel work.
+  [state.md](../../knowledge/state.md) current, merge parallel work, monitor harness
+  [usage limits](../process/orchestration.md#usage-limits) around every spawn wave.
 - **Authority:** everything not on the mandatory-gate list; choosing tracks and review
   levels; splitting/re-scoping work.
 - **Must not:** implement non-trivial changes without entering the task loop; review its
   own implementation work at peer level; let a blocked gate stall unrelated work;
+  spawn subagents past a suspended [usage limit](../process/orchestration.md#usage-limits)
+  (95% → suspend, checkpoint, park `⏳limit`, resume at verified reset);
   absorb a killed or failed spawned role's work inline → park it as a durable checkpoint
   and restart the role (from the checkpoint, or from the start if none exists) — inline
   absorption inflates cost and loses the role's independence.

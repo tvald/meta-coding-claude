@@ -114,6 +114,29 @@ shared unresolved spec questions, no ordering dependency.
   at the cap, merge or park before spawning another; merge debt compounds faster than
   breadth pays.
 
+## Usage limits
+
+Harness usage limits (rolling windows, weekly caps, spend ceilings) are a managed
+resource like any other budget — running into one mid-fan-out loses work; managing it
+loses nothing.
+
+- **Monitor:** check consumption against every applicable limit before each spawn wave,
+  and periodically (~15 min) during long multi-agent phases. Adapters bind the
+  measurement mechanism (e.g. [.claude/README.md](../../../.claude/README.md#usage-limit-guard)).
+- **Suspend at 95%:** when any limit reaches ~95%, stop spawning subagents. Checkpoint
+  in-flight spawned work — branch + progress into task files, never absorbed inline —
+  and park the paused fan-out in `state.md` as `⏳limit <reset time>`. The orchestrator
+  may continue low-burn solo work (doc edits, review reading, state upkeep) or close the
+  session cleanly; it may not keep fanning out.
+- **A real limit error is 100%,** regardless of what the estimate said: latch
+  immediately, record the reset time the error names, and correct the configured
+  estimate so 95% fires earlier next time.
+- **Resume at reset:** when the reset time is known (5-hour block end, a stated weekly
+  reset), set a timer to it and verify with one measurement poll on wake — timers drift
+  and estimates err, so the poll, not the timer, authorizes resumption. When the reset
+  time is unknown, poll hourly. Resume the parked fan-out from its checkpoints
+  ([recover orphaned branches](#parallelization)), oldest first.
+
 ## Integration mechanics
 
 For the default solo-PO setup with no remote workflow: work happens on short-lived task
