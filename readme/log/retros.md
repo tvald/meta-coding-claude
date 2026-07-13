@@ -4,6 +4,23 @@
 
 # Retros
 
+# Retro: 2026-07-13 [correction] PO feedback — auto-detect usage limits
+
+- **Trigger:** [correction] PO feedback ("the framework should automatically detect
+  usage limits") hours after the config-estimates design shipped.
+- **What happened:** A live probe disproved the design assumption — the first-party
+  usage endpoint IS programmatically reachable with the local OAuth token. Guard
+  rewritten: official source primary, config→fallback, latch→backstop. Gated review
+  (credential handling): approve; 3 advisories applied incl. per-window fallback merge.
+- **Gap:** the original design treated "no *documented* API" as "no API" and settled
+  for estimates without probing what the /usage UI itself calls. Verify-by-probe was
+  applied to ccusage but not to the better source. (First occurrence of this correction
+  topic — grep found no prior entry. Watch: assuming documented-only sources.)
+- **Change made:** the rewrite itself; changelog row logged. If a second
+  assumed-impossible-but-unprobed correction appears, add a rule to
+  engineering/derivation standards ("probe the mechanism behind the UI before
+  settling for an approximation").
+
 # Retro: 2026-07-13 — usage-limit guard session
 
 - **What happened:** PO-directed usage-limit management shipped end-to-end on a task
