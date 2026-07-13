@@ -82,41 +82,37 @@ table is verified). Further hooks should follow real incidents
 
 ## Usage-limit guard
 
-Binds the canonical rule in
+Cooperative binding of the canonical rule in
 [orchestration.md#usage-limits](../readme/meta/process/orchestration.md#usage-limits):
-suspend subagent spawns at ≥95%
-of the 5-hour or weekly limit, resume at verified reset. PO-approved executable
-(2026-07-13) under the adapter contract's opt-in carve-out.
+suspend subagent spawns at ≥95% of the 5-hour or weekly limit, resume at verified
+reset. No hook, no script (ADR 0004) — enforcement is the orchestrator's contract
+([roles](../readme/meta/agents/roles.md): poll before spawn waves is a *Does*, spawning
+past suspension is a *Must not*) plus the harness's own signals (real limit errors on
+spawns; the `/usage` display for the PO). The deterministic-hook variant lives in git
+history (`bc574be` and earlier) and is reinstated only on a real compliance incident —
+[hooks follow incidents](#optional-deterministic-enforcement-hooks), not speculation.
 
-| Piece | Role |
-|-------|------|
-| `scripts/usage-guard.ts` | detection + decision (no deps; Node ≥22.18 or ≥23.6 runs it directly — verify once per environment, since a Node that can't run it fails open) |
-| `settings.json` PreToolUse `Task\|Agent` hook | deterministic gate: every subagent spawn runs `usage-guard.ts gate`; exit 2 denies the spawn with the reset time |
-| `usage-limit-latch.json` | runtime latch (gitignored) — created by `latch`, self-clears past its reset |
+**Poll** (before each spawn wave; ~15-min during long fan-outs) — auto-detection only,
+per ADR 0003; the token is read-only, never logged, and goes nowhere but
+api.anthropic.com; both paths of this command are execution-verified:
 
-**How it measures:** auto-detection only — the first-party usage endpoint behind
-`/usage` (local OAuth token from `$CLAUDE_CONFIG_DIR/.credentials.json`; read-only,
-exact utilization percentages and reset instants, token never logged nor sent anywhere
-but api.anthropic.com; PO-approved credential use, 2026-07-13). Zero configuration.
-**A limit that cannot be obtained automatically is not monitored** (PO directive
-2026-07-13) — no manual estimates exist; where detection is unavailable the guard fails
-open and the **latch** is the only backstop: on any real limit error, run
-`node .claude/scripts/usage-guard.ts latch <reset-ISO> "<which limit>"` (the error names
-the reset). A real limit error while detection read <95% means detection failed —
-investigate before trusting it again.
+```bash
+node -e '(async()=>{try{const f=process.env.CLAUDE_CONFIG_DIR??process.env.HOME+"/.claude";const k=JSON.parse(require("fs").readFileSync(f+"/.credentials.json","utf8"));const t=(k.claudeAiOauth??k).accessToken;const r=await fetch("https://api.anthropic.com/api/oauth/usage",{headers:{Authorization:"Bearer "+t,"anthropic-beta":"oauth-2025-04-20"},redirect:"error",signal:AbortSignal.timeout(8000)});const d=await r.json();console.log(JSON.stringify({five_hour:d.five_hour,seven_day:d.seven_day},null,1))}catch{console.log("not auto-detectable - not monitored; on any real limit error park a ⏳limit entry in state.md")}})()'
+```
 
-**Orchestrator protocol** (summary — canonical in orchestration.md#usage-limits):
+`utilization` is 0–100 per window; `resets_at` is the reset instant.
 
-- Poll `node .claude/scripts/usage-guard.ts status` before each spawn wave and ~15-min
-  during long fan-outs (the hook is the backstop; polling avoids losing a wave's setup).
-- On suspension: checkpoint spawned work (branch + progress → task files), park
-  `⏳limit <reset>` in `state.md`, continue low-burn solo work or close cleanly.
-- **Resume timer:** `sleep` until the reset in a background shell (5-hour reset =
-  `fiveHour.resetsAt` from `status`; weekly = `weekly.resetsAt`), then one verification
-  poll of `status` — the poll, not the timer, authorizes resuming; if still over, sleep
-  to the next reset. Reset time unknown → poll hourly instead. Across sessions, the
-  `⏳limit` entry in `state.md` carries the reset time; a scheduled `/work` session at
-  that time (see below) resumes unattended.
+- **Suspend at ≥95%** (either window): checkpoint spawned work (branch + progress →
+  task files), park **`⏳limit <resets_at>`** in `state.md` — that entry *is* the
+  latch: every session boot reads `state.md`, so suspension survives crashes and
+  session boundaries. Remove it only after a verification poll past the reset.
+- **A real limit error is 100%:** park the `⏳limit` entry immediately (the error names
+  the reset). If the poll had read <95%, detection failed — investigate before trusting
+  it again.
+- **Resume:** `sleep` until `resets_at` in a background shell, then one verification
+  poll — the poll, not the timer, authorizes resuming; not detectable → poll hourly.
+  For unattended resumption, schedule a `/work` session at the reset (see below); its
+  boot reads the `⏳limit` entry and continues from the checkpoints.
 
 ## Optional: scheduled autonomy
 
