@@ -80,6 +80,41 @@ Replace the `<placeholders>` with real commands during onboarding (after the Com
 table is verified). Further hooks should follow real incidents
 ([refinement signals](../readme/meta/process/refinement.md#signals)), not speculation.
 
+## Usage-limit guard
+
+Binds the canonical rule in
+[orchestration.md#usage-limits](../readme/meta/process/orchestration.md#usage-limits):
+suspend subagent spawns at ≥95%
+of the 5-hour or weekly limit, resume at verified reset. PO-approved executable
+(2026-07-13) under the adapter contract's opt-in carve-out.
+
+| Piece | Role |
+|-------|------|
+| `scripts/usage-guard.ts` | measurement + decision (no deps; Node ≥22 runs it directly) |
+| `usage-limits.json` | configured estimates: `threshold` (0.95), `five_hour_tokens`, `weekly_tokens`, `weekly_reset` (any past ISO anchor of the account's weekly reset instant) |
+| `settings.json` PreToolUse `Task\|Agent` hook | deterministic gate: every subagent spawn runs `usage-guard.ts gate`; exit 2 denies the spawn with the reset time |
+| `usage-limit-latch.json` | runtime latch (gitignored) — created by `latch`, self-clears past its reset |
+
+**How it measures, honestly:** `ccusage` estimates tokens from local transcripts; plan
+limits are dynamic and unpublished, so `usage-limits.json` holds *estimates* refined by
+observation. The authoritative signal is a real limit error from the harness — on seeing
+one, the orchestrator runs `node .claude/scripts/usage-guard.ts latch <reset-ISO>
+"<which limit>"` (the error names the reset), then corrects the configured estimate so
+95% fires earlier next time.
+
+**Orchestrator protocol** (summary — canonical in orchestration.md#usage-limits):
+
+- Poll `node .claude/scripts/usage-guard.ts status` before each spawn wave and ~15-min
+  during long fan-outs (the hook is the backstop; polling avoids losing a wave's setup).
+- On suspension: checkpoint spawned work (branch + progress → task files), park
+  `⏳limit <reset>` in `state.md`, continue low-burn solo work or close cleanly.
+- **Resume timer:** `sleep` until the reset in a background shell (5-hour reset =
+  `fiveHour.resetsAt` from `status`; weekly = `weekly.resetsAt`), then one verification
+  poll of `status` — the poll, not the timer, authorizes resuming; if still over, sleep
+  to the next reset. Reset time unknown → poll hourly instead. Across sessions, the
+  `⏳limit` entry in `state.md` carries the reset time; a scheduled `/work` session at
+  that time (see below) resumes unattended.
+
 ## Optional: scheduled autonomy
 
 Time-based triggers (maintenance cadence, idle-time backlog work) only fire when a
