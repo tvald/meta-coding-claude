@@ -41,7 +41,7 @@ function readJson(path: string): any | null {
   try { return JSON.parse(readFileSync(path, "utf8")); } catch { return null; }
 }
 
-async function official(): Promise<{ fiveHour: Window; weekly: Window } | null> {
+async function official(): Promise<{ fiveHour: Window | null; weekly: Window | null } | null> {
   try {
     const cfgDir = process.env.CLAUDE_CONFIG_DIR ?? join(homedir(), ".claude");
     const raw = readJson(join(cfgDir, ".credentials.json"));
@@ -50,6 +50,7 @@ async function official(): Promise<{ fiveHour: Window; weekly: Window } | null> 
     const r = await fetch("https://api.anthropic.com/api/oauth/usage", {
       headers: { Authorization: `Bearer ${k.accessToken}`, "anthropic-beta": "oauth-2025-04-20" },
       signal: AbortSignal.timeout(8000),
+      redirect: "error", // never legitimately 3xx; belt-and-braces against token exposure
     });
     if (!r.ok) return null;
     const d: any = await r.json();
@@ -59,10 +60,7 @@ async function official(): Promise<{ fiveHour: Window; weekly: Window } | null> 
         : null;
     const fh = win(d.five_hour), sd = win(d.seven_day);
     if (!fh && !sd) return null;
-    return {
-      fiveHour: fh ?? { pct: null, resetsAt: null, source: "none" },
-      weekly: sd ?? { pct: null, resetsAt: null, source: "none" },
-    };
+    return { fiveHour: fh, weekly: sd }; // per-window; a missing window falls back to estimates
   } catch { return null; }
 }
 
@@ -106,9 +104,16 @@ async function measure() {
   const cfg = readJson(CONFIG) ?? {};
   const threshold: number = cfg.threshold ?? 0.95;
   const off = await official();
-  if (off) return { threshold, ...off, latch: readJson(LATCH), measured: true };
-  const est = estimates(cfg);
-  return { threshold, fiveHour: est.fiveHour, weekly: est.weekly, latch: readJson(LATCH), measured: est.measured };
+  let fiveHour = off?.fiveHour ?? null;
+  let weekly = off?.weekly ?? null;
+  let measured = off != null;
+  if (!fiveHour || !weekly) {
+    const est = estimates(cfg); // per-window fallback for whatever official didn't cover
+    fiveHour = fiveHour ?? est.fiveHour;
+    weekly = weekly ?? est.weekly;
+    measured = measured || est.measured;
+  }
+  return { threshold, fiveHour, weekly, latch: readJson(LATCH), measured };
 }
 
 async function main() {

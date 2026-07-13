@@ -5,7 +5,7 @@
   Security-sensitive approach (reads local OAuth credentials): PO directive is the gate-4
   approval; mechanism disclosed in-session — first-party read-only usage endpoint, token
   never logged or sent elsewhere.
-- **Status:** in-progress
+- **Status:** done
 - **Size guess:** S
 - **KB refs:** `readme/work/tasks/usage-limit-guard.md` (prior review, advisory A —
   dormant 95% gate — is exactly what this removes); AGENTS.md routing (credential-
@@ -40,7 +40,8 @@ Verify by execution; peer review; merge.
       override hid ccusage's data too, so this exercised official→estimate→none; the
       estimate path itself is unchanged code, verified in the prior review round.)
 - [x] Latch deny (exit 2) / self-clear (exit 0) re-verified.
-- [ ] Peer review approved; findings recorded below.
+- [x] Peer review approved; findings recorded below. Post-fix re-verification: status
+      official 0.34/0.27, gate 0, latch 2, self-clear 0.
 
 ## Notes / discoveries
 
@@ -50,4 +51,16 @@ Verify by execution; peer review; merge.
 
 ## Review
 
-<!-- verdict, findings, fixes, waivers -->
+**Verdict: approve** (reviewer subagent, fresh context, commit 3adf7a6; gated level).
+Security cleared explicitly: token header-only to a hard-pinned host, no URL
+interpolation, all failure paths silently swallowed (no token in any error text), no
+writes to the 600-mode credential file, no token in any output; `utilization/100`
+semantics verified live; zero-utilization, timeout, expiry-401, clock-skew, and
+exit-code paths all checked as non-issues. Advisories, all applied:
+
+- **1:** orchestration.md latch guidance still said "correct the configured estimate" —
+  reconciled to cover authoritative-source failure vs estimate correction.
+- **2:** plan promised per-window merge; code was official-wins-wholesale — implemented
+  the per-window fallback (a missing official window now falls to estimates).
+- **3:** `redirect: "error"` pinned on the fetch (defense-in-depth; undici already
+  strips Authorization cross-origin).

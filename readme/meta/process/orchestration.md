@@ -128,9 +128,11 @@ loses nothing.
   and park the paused fan-out in `state.md` as `⏳limit <reset time>`. The orchestrator
   may continue low-burn solo work (doc edits, review reading, state upkeep) or close the
   session cleanly; it may not keep fanning out.
-- **A real limit error is 100%,** regardless of what the estimate said: latch
-  immediately, record the reset time the error names, and correct the configured
-  estimate so 95% fires earlier next time.
+- **A real limit error is 100%,** regardless of what the measurement said: latch
+  immediately, record the reset time the error names, and fix the detection — if
+  measurement came from an authoritative source that read <95%, investigate before
+  trusting it again; if it came from a configured estimate, correct the estimate so 95%
+  fires earlier next time.
 - **Resume at reset:** when the reset time is known (5-hour block end, a stated weekly
   reset), set a timer to it and verify with one measurement poll on wake — timers drift
   and estimates err, so the poll, not the timer, authorizes resumption. When the reset
