@@ -11,4 +11,5 @@ who-decides rules: [decisions process](../../meta/knowledge/decisions.md).
 | # | Decision | Status | Date |
 |---|----------|--------|------|
 | [0001](0001-adopt-agentic-framework.md) | Adopt this agentic development framework | proposed | 2026-07-10 |
+| [0002](0002-usage-measurement-dependencies.md) | Measure usage via undocumented first-party endpoint, ccusage fallback | accepted | 2026-07-13 |
 <!-- Append new rows at the bottom. Keep this table in sync in the same commit as the ADR. -->
