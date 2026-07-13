@@ -3,7 +3,7 @@
 - **Spec:** direct (PO instruction 2026-07-13: "monitor usage and suspend sub-agents once
   95% of the 5-hour or weekly limits are consumed; set a timer, or poll if more reliable,
   and resume once the applicable limit resets")
-- **Status:** in-progress
+- **Status:** done
 - **Size guess:** M
 - **KB refs:** roles.md orchestrator contract (authority change → PO-gated; this PO
   instruction is the approval); meta/README.md#adapters (executables opt-in,
@@ -46,7 +46,7 @@ core, working enforcement in the Claude adapter.
 - [x] `.claude/settings.json` parses as valid JSON (node JSON.parse).
 - [x] Link checker passes — only the 12 pre-existing by-design hits (frozen archive
       links + deploy-relative seed links), none introduced by this change.
-- [ ] Peer review approved; findings recorded below.
+- [x] Peer review approved; findings recorded below.
 
 ## Notes / discoveries
 
@@ -57,4 +57,21 @@ core, working enforcement in the Claude adapter.
 
 ## Review
 
-<!-- verdict, findings (blocking/advisory, file:line), fixes, waivers -->
+**Verdict: approve** (reviewer subagent, fresh context, commit 74e2931; all executable
+checks independently re-run — status JSON valid at 17.4M tokens/active block, fail-open,
+latch deny/self-clear, threshold trip, weekly whole-week arithmetic, JSON validity,
+anchors, gitignore, ~0.6s hot-path latency; contract/consistency checks clean, no
+security exposure). No blocking findings. Advisories and dispositions:
+
+- **A (advisory):** 95% gate ships dormant (null config) — latch-only until limits are
+  recorded. *Fixed:* README states it plainly; `latch` now prints the two
+  follow-through steps (park `⏳limit`; record observed tokens so 95% becomes operative).
+- **B (advisory):** `npx ccusage@latest` on the hot path → registry hit / cold-cache
+  stall risk. *Fixed:* pinned to `ccusage@20.0.17`, bump deliberately.
+- **C (advisory):** "Node ≥22" imprecise; older 22.x fails silently open. *Fixed:*
+  corrected to ≥22.18/≥23.6 in script + README, with verify-once-per-environment note.
+- **D (advisory):** weekly estimate undercounts blocks straddling the reset boundary.
+  *Waived* — estimate-level tool by design; bias documented in the code.
+- **E (advisory):** crash window between limit error and latch/park (two manual steps).
+  *Partially addressed* by the latch reminder output; residual risk accepted —
+  self-correcting on next limit hit.

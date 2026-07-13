@@ -1,6 +1,8 @@
 // Usage-limit guard — binds readme/meta/process/orchestration.md#usage-limits for
 // Claude Code. PO-approved executable (2026-07-13) under the adapter contract
-// (readme/meta/README.md#adapters). No dependencies; Node ≥22 runs it directly.
+// (readme/meta/README.md#adapters). No dependencies; Node ≥22.18 (or ≥23.6) runs it
+// directly (native type stripping — older Nodes exit 1, which a PreToolUse hook treats
+// as non-blocking: verify the guard actually runs once per environment).
 //
 // Modes:
 //   gate            PreToolUse hook for subagent spawns: exit 2 (deny) at ≥threshold
@@ -33,7 +35,9 @@ function readJson(path: string): any | null {
 
 function blocks(): Block[] | null {
   try {
-    const out = execSync("npx -y ccusage@latest blocks --json --offline", {
+    // Pinned: @latest would hit the registry on the hot path and can stall a cold
+    // cache to the timeout, silently failing open. Bump deliberately.
+    const out = execSync("npx -y ccusage@20.0.17 blocks --json --offline", {
       encoding: "utf8", stdio: ["ignore", "pipe", "ignore"], timeout: 45000,
     });
     return (JSON.parse(out).blocks as Block[]).filter(b => !b.isGap);
@@ -64,6 +68,8 @@ function measure() {
   if (bs && cfg.weekly_reset) {
     const since = lastWeeklyReset(cfg.weekly_reset, now);
     if (!Number.isNaN(since)) {
+      // Known bias: a block straddling the weekly reset counts zero toward the new
+      // week (estimate-level tool; accepted in review 2026-07-13).
       weekly.tokens = bs.filter(b => Date.parse(b.startTime) >= since).reduce((s, b) => s + b.totalTokens, 0);
       weekly.resetsAt = new Date(since + WEEK_MS).toISOString();
       if (weekly.limit) weekly.pct = weekly.tokens / weekly.limit;
@@ -83,6 +89,7 @@ if (mode === "latch") {
   }
   writeFileSync(LATCH, JSON.stringify({ resetsAt, reason: process.argv[4] ?? "harness limit error", latchedAt: new Date().toISOString() }, null, 2));
   console.log(`latched until ${resetsAt}`);
+  console.log(`NOW ALSO (orchestration.md#usage-limits): 1) park '⏳limit ${resetsAt}' in state.md with the checkpointed work; 2) record the observed token count into .claude/usage-limits.json so the 95% gate becomes operative.`);
   process.exit(0);
 }
 

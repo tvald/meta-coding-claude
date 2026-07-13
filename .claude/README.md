@@ -90,17 +90,21 @@ of the 5-hour or weekly limit, resume at verified reset. PO-approved executable
 
 | Piece | Role |
 |-------|------|
-| `scripts/usage-guard.ts` | measurement + decision (no deps; Node ≥22 runs it directly) |
+| `scripts/usage-guard.ts` | measurement + decision (no deps; Node ≥22.18 or ≥23.6 runs it directly — verify once per environment, since a Node that can't run it fails open) |
 | `usage-limits.json` | configured estimates: `threshold` (0.95), `five_hour_tokens`, `weekly_tokens`, `weekly_reset` (any past ISO anchor of the account's weekly reset instant) |
 | `settings.json` PreToolUse `Task\|Agent` hook | deterministic gate: every subagent spawn runs `usage-guard.ts gate`; exit 2 denies the spawn with the reset time |
 | `usage-limit-latch.json` | runtime latch (gitignored) — created by `latch`, self-clears past its reset |
 
 **How it measures, honestly:** `ccusage` estimates tokens from local transcripts; plan
 limits are dynamic and unpublished, so `usage-limits.json` holds *estimates* refined by
-observation. The authoritative signal is a real limit error from the harness — on seeing
+observation. **Until the config is populated, only the latch path enforces** — the 95%
+gate needs limits to compare against, so the pre-emptive protection starts as latch-only
+and becomes operative the first time an observed limit (or a plan-documented one) is
+recorded. The authoritative signal is a real limit error from the harness — on seeing
 one, the orchestrator runs `node .claude/scripts/usage-guard.ts latch <reset-ISO>
-"<which limit>"` (the error names the reset), then corrects the configured estimate so
-95% fires earlier next time.
+"<which limit>"` (the error names the reset; the command prints the two follow-through
+steps: park `⏳limit` in `state.md`, record the observed tokens into
+`usage-limits.json` so 95% fires earlier next time).
 
 **Orchestrator protocol** (summary — canonical in orchestration.md#usage-limits):
 
