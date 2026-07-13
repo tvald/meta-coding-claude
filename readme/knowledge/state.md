@@ -18,6 +18,11 @@
 <!-- Last few completed items, newest first. One line each. Prune aggressively —
      git history is the full record. -->
 
+- 2026-07-13: Usage-limit guard shipped (PO directive): §Usage limits in orchestration.md
+  (suspend spawns at 95%, checkpoint, ⏳limit park, timer+verify-poll resume) + active
+  Claude binding (`usage-guard.ts`, PreToolUse hook). Peer-reviewed: approve, advisories
+  applied. Task: `readme/work/tasks/usage-limit-guard.md`. NOTE: 95% gate is latch-only
+  until `.claude/usage-limits.json` gets real limits — record them on first limit error.
 - 2026-07-13: Added standing external-review practice (`refinement.md` §External review) —
   the twice-flagged "silent gaps need outside eyes" retro pattern, now a rule.
 - 2026-07-10: Adopted the adapter contract (`readme/meta/README.md#adapters`, PO-directed):
