@@ -120,19 +120,20 @@ Harness usage limits (rolling windows, weekly caps, spend ceilings) are a manage
 resource like any other budget — running into one mid-fan-out loses work; managing it
 loses nothing.
 
-- **Monitor:** check consumption against every applicable limit before each spawn wave,
-  and periodically (~15 min) during long multi-agent phases. Adapters bind the
-  measurement mechanism (e.g. [.claude/README.md](../../../.claude/README.md#usage-limit-guard)).
+- **Monitor what's automatic; nothing else.** Check consumption against every
+  *auto-detectable* limit before each spawn wave, and periodically (~15 min) during
+  long multi-agent phases. Adapters bind the detection mechanism (e.g.
+  [.claude/README.md](../../../.claude/README.md#usage-limit-guard)). Do not maintain
+  manual limit estimates — a limit that can't be obtained automatically is handled
+  reactively (the latch rule below), not guessed at.
 - **Suspend at 95%:** when any limit reaches ~95%, stop spawning subagents. Checkpoint
   in-flight spawned work — branch + progress into task files, never absorbed inline —
   and park the paused fan-out in `state.md` as `⏳limit <reset time>`. The orchestrator
   may continue low-burn solo work (doc edits, review reading, state upkeep) or close the
   session cleanly; it may not keep fanning out.
-- **A real limit error is 100%,** regardless of what the measurement said: latch
-  immediately, record the reset time the error names, and fix the detection — if
-  measurement came from an authoritative source that read <95%, investigate before
-  trusting it again; if it came from a configured estimate, correct the estimate so 95%
-  fires earlier next time.
+- **A real limit error is 100%,** regardless of what detection said: latch immediately,
+  record the reset time the error names, and — if detection had read <95% — investigate
+  the detection before trusting it again.
 - **Resume at reset:** when the reset time is known (5-hour block end, a stated weekly
   reset), set a timer to it and verify with one measurement poll on wake — timers drift
   and estimates err, so the poll, not the timer, authorizes resumption. When the reset

@@ -1,6 +1,6 @@
 # 0002. Measure usage via the undocumented first-party endpoint, ccusage as fallback
 
-- **Status:** accepted
+- **Status:** superseded by [0003](0003-auto-detected-limits-only.md)
 - **Date:** 2026-07-13
 - **Decided by:** PO (directive: limits must be auto-detected) + agent (mechanism choice)
 

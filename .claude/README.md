@@ -90,22 +90,20 @@ of the 5-hour or weekly limit, resume at verified reset. PO-approved executable
 
 | Piece | Role |
 |-------|------|
-| `scripts/usage-guard.ts` | measurement + decision (no deps; Node ≥22.18 or ≥23.6 runs it directly — verify once per environment, since a Node that can't run it fails open) |
-| `usage-limits.json` | `threshold` (0.95) + optional fallback estimates (`five_hour_tokens`, `weekly_tokens`, `weekly_reset`) — only consulted when the official source is unavailable |
+| `scripts/usage-guard.ts` | detection + decision (no deps; Node ≥22.18 or ≥23.6 runs it directly — verify once per environment, since a Node that can't run it fails open) |
 | `settings.json` PreToolUse `Task\|Agent` hook | deterministic gate: every subagent spawn runs `usage-guard.ts gate`; exit 2 denies the spawn with the reset time |
 | `usage-limit-latch.json` | runtime latch (gitignored) — created by `latch`, self-clears past its reset |
 
-**How it measures:** limits are **auto-detected** — the guard's primary source is the
-first-party usage endpoint behind `/usage` (local OAuth token from
-`$CLAUDE_CONFIG_DIR/.credentials.json`; read-only, exact utilization percentages and
-reset instants, token never logged nor sent anywhere but api.anthropic.com; PO-approved
-credential use, 2026-07-13). No configuration is needed where credentials exist. The
-endpoint is undocumented, so the guard degrades silently: official → `ccusage`
-token-count estimates vs the optional config → fail-open with the **latch** as the
-authoritative backstop — on any real limit error, run
+**How it measures:** auto-detection only — the first-party usage endpoint behind
+`/usage` (local OAuth token from `$CLAUDE_CONFIG_DIR/.credentials.json`; read-only,
+exact utilization percentages and reset instants, token never logged nor sent anywhere
+but api.anthropic.com; PO-approved credential use, 2026-07-13). Zero configuration.
+**A limit that cannot be obtained automatically is not monitored** (PO directive
+2026-07-13) — no manual estimates exist; where detection is unavailable the guard fails
+open and the **latch** is the only backstop: on any real limit error, run
 `node .claude/scripts/usage-guard.ts latch <reset-ISO> "<which limit>"` (the error names
-the reset). A real limit error while the official source read <95% means detection
-failed — investigate before trusting it again.
+the reset). A real limit error while detection read <95% means detection failed —
+investigate before trusting it again.
 
 **Orchestrator protocol** (summary — canonical in orchestration.md#usage-limits):
 
