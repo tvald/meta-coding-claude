@@ -4,6 +4,22 @@
 
 # Retros
 
+# Retro: 2026-07-13 — usage-limit arc closed cooperative
+
+- **What happened:** Three PO-directed iterations in one day: hook+script guard →
+  auto-detection (config demoted) → estimates removed (ADR 0003) → hook/script removed
+  for cooperative enforcement (ADR 0004, PO approved the evaluated proposal). Each step
+  peer/gated-reviewed, each verified by execution; kit is markdown-only again.
+- **Gap:** the arc itself is the lesson — the first design shipped two speculative
+  layers (manual estimates, a deterministic hook) that the PO stripped in consecutive
+  corrections. Both violated doctrine the framework already had ("hooks follow real
+  incidents"; artifacts must pay rent). Pattern to watch: adding mechanism ahead of
+  incident under the banner of thoroughness. Related [correction] entries: auto-detect
+  (probe before approximating), model tiering, no-inline-fallback — the common thread
+  is resource/mechanism minimalism; a repeat makes a standing rule mandatory
+  ("mechanism follows incident" as an engineering principle).
+- **Change made:** ADRs 0003/0004 + the deletions; reinstatement trigger recorded.
+
 # Retro: 2026-07-13 [correction] PO feedback — auto-detect usage limits
 
 - **Trigger:** [correction] PO feedback ("the framework should automatically detect

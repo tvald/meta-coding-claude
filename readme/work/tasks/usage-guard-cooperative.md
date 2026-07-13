@@ -3,7 +3,7 @@
 - **Spec:** direct (PO approval 2026-07-13 of the presented cooperative proposal:
   "Yes, implement the cooperative proposal"). Supersedes the mechanism (not the policy)
   of the hook-based guard.
-- **Status:** in-progress
+- **Status:** done
 - **Size guess:** S
 - **KB refs:** ADR 0003 (auto-only monitoring policy — unchanged); orchestration.md
   §Usage limits (canonical rule — unchanged); .claude/README hooks doctrine ("hooks
@@ -37,7 +37,7 @@ requires a real compliance incident (refinement signal), recorded in the ADR.
 - [x] `git ls-files | grep -v '\.md$'` shows no `.claude/` entries (count 0).
 - [x] Link check: exactly the 12 pre-existing by-design hits (frozen archive +
       deploy-relative seed links); nothing new.
-- [ ] Peer review approved; findings recorded below.
+- [x] Peer review approved; findings recorded below.
 
 ## Notes / discoveries
 
@@ -47,4 +47,15 @@ requires a real compliance incident (refinement signal), recorded in the ADR.
 
 ## Review
 
-<!-- verdict, findings, fixes, waivers -->
+**Verdict: approve** (reviewer subagent, fresh context, commit 620c932, peer level).
+Independently re-ran the documented one-liner verbatim — success path 52%/28% with
+resets, failure path clean message/no trace/no token; confirmed `.claude/` markdown-only
+via `git ls-files`; confirmed `bc574be` contains the hook+script byte-identical to the
+deleted versions (restore pointer exact); all anchors resolve; stale-latch clearing
+confirmed *stronger* than the old script's timer-based self-clear (verification-poll
+gated). Advisories, both applied at close:
+
+- **1:** state.md *Recently done* still described the hook as live — superseded marker
+  appended + ADR 0004 entry added at merge (single-writer: orchestrator).
+- **2:** bare-SHA restore pointer durability — ADR 0004 now also names this task file
+  alongside `bc574be`.

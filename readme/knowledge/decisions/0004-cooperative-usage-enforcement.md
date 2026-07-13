@@ -39,5 +39,7 @@ poll. The hook and script are deleted; `.claude/` is markdown-only again.
 - Harder: nothing *prevents* a non-compliant orchestrator from spawning past 95% — the
   risk is bounded (checkpoint discipline makes limit hits recoverable) and accepted.
 - **Reinstatement trigger:** one real incident of an orchestrator spawning past a
-  suspended limit → restore the hook variant from git history (`bc574be`) via a
-  superseding ADR. That incident is a refinement signal, not an argument.
+  suspended limit → restore the hook variant from git history (commit `bc574be`;
+  provenance and review record in `readme/work/tasks/usage-guard-autodetect.md` and
+  `usage-limit-guard.md` if the SHA ever dangles) via a superseding ADR. That incident
+  is a refinement signal, not an argument.
