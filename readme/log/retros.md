@@ -4,6 +4,16 @@
 
 # Retros
 
+# Retro: 2026-07-13 — resume + external-review refinement
+
+- **What happened:** Session resumed after a gap; state.md was clean (all prior sessions
+  closed). The one queued internal item was the twice-flagged retro pattern: both 2026-07
+  external reviews found silent gaps invisible to incident-driven signals. Applied the
+  standing rule: `refinement.md` §External review (changelog row logged).
+- **Gap:** none new — this closes the previously recorded one.
+- **Change made:** the §External review section itself. First scheduled run: after the
+  next major framework change, else ~2026-10.
+
 # Retro: 2026-07-10 — adapter contract + Codex adapter session
 
 - **What happened:** PO adopted five adapter principles (proposed refinements accepted):

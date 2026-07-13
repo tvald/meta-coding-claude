@@ -22,6 +22,18 @@ tinkering with the process on aesthetics.
 | A rule was consciously worked around | moderate — the rule may be wrong |
 | The maintenance pulse worsens two consecutive runs ([loops](loops.md#maintenance-loop)) | strong — find the loop that degraded, not just the instances |
 
+## External review
+
+Every signal above is incident-driven, which makes the whole table structurally blind to
+one class of defect: the silent gap — an unsafe default, a missing trust rule, a hole
+that only becomes an incident *after* it's exploited. Those are found by outside eyes,
+not by waiting. So: after any major change to the framework itself, and otherwise every
+~3 months, commission one **external review** — a fresh-context adversarial read of
+these process docs (or a comparison against a current outside framework) by an agent
+with none of this project's session context, briefed to hunt for unsafe defaults and
+missing rules rather than style. Findings route through the normal procedure below; the
+review leaves a dated retro entry, so the retro log schedules the next one.
+
 ## The refinement procedure
 
 1. **Locate the owning doc.** Every rule has one home

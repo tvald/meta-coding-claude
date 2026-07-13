@@ -18,6 +18,8 @@
 <!-- Last few completed items, newest first. One line each. Prune aggressively —
      git history is the full record. -->
 
+- 2026-07-13: Added standing external-review practice (`refinement.md` §External review) —
+  the twice-flagged "silent gaps need outside eyes" retro pattern, now a rule.
 - 2026-07-10: Adopted the adapter contract (`readme/meta/README.md#adapters`, PO-directed):
   adapters bind, never own, process semantics; maintenance loop now audits it (step 6).
 - 2026-07-10: Added Codex adapter `.agents/` (Agent Skills mirror of the seven skills;
